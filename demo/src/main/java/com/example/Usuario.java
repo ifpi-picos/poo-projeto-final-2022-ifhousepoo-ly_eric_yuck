@@ -20,6 +20,12 @@ public class Usuario {
     public Endereco getEnderecoU() {
         return enderecoU;
     }
+    public void setEmail(String email) {
+        this.email = email;
+    }
+    public void setEnderecoU(Endereco enderecoU) {
+        this.enderecoU = enderecoU;
+    }
 
     
 }

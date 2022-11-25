@@ -20,6 +20,13 @@ public class Imovel {
     public LocalDate getDataDeCadastro() {
         return dataDeCadastro;
     }
+    
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+    public void setValorDoAlugue(double valorDoAlugue) {
+        this.valorDoAlugue = valorDoAlugue;
+    }
 
     
 }
