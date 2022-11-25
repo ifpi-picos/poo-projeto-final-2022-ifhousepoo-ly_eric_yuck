@@ -7,7 +7,7 @@ public class Aluguel {
     private LocalDate dataDeFim;
     private Imovel imovel;
     private boolean alugado;
-    
+
     public LocalDate getDataDeIn() {
         return dataDeIn;
     }

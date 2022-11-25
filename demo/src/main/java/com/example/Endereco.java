@@ -7,6 +7,13 @@ public class Endereco {
     private String logradouro;
     private int numero;
     
+    public Endereco(String estado, String cidade, String bairro, String logradouro, int numero) {
+        this.estado = estado;
+        this.cidade = cidade;
+        this.bairro = bairro;
+        this.logradouro = logradouro;
+        this.numero = numero;
+    }
     public String getEstado() {
         return estado;
     }

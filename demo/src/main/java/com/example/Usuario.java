@@ -8,6 +8,13 @@ public class Usuario {
     private LocalDate dataDeNasc;
     private Endereco enderecoU;
     
+    public Usuario(String nome, String email, LocalDate dataDeNasc, Endereco enderecoU) {
+        this.nome = nome;
+        this.email = email;
+        this.dataDeNasc = dataDeNasc;
+        this.enderecoU = enderecoU;
+    }
+    
     public String getNome() {
         return nome;
     }
