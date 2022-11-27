@@ -1,8 +1,7 @@
-package com.example;
+package com.example.Entidades;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-
 public class Imovel {
     private String descricao;
     private double valorDoAlugue;

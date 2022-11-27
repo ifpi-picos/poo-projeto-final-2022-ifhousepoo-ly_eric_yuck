@@ -1,4 +1,4 @@
-package com.example;
+package com.example.Entidades;
 
 public class Endereco {
     private String estado;
