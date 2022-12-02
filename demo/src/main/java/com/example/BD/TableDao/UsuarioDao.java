@@ -7,9 +7,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
+import com.example.BD.TableDao.Interface.IUsuario;
 import com.example.Entidades.Usuario;
 import com.example.conexaoBD.Conexao;
-import com.example.conexaoBD.Interface.IUsuario;
 
 public class UsuarioDao implements IUsuario{
 

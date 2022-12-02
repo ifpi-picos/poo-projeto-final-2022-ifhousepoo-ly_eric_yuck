@@ -1,4 +1,4 @@
-package com.example.conexaoBD.Interface;
+package com.example.BD.TableDao.Interface;
 
 import java.sql.SQLException;
 import java.util.List;

@@ -18,9 +18,7 @@ public class Usuario {
         this.dataDeNasc = dataDeNasc;
     
     }
-    /**
-     * 
-     */
+    
     public Usuario() {
     }
     public String getNome() {
@@ -69,7 +67,7 @@ public class Usuario {
     
     public String toString() {
         return "Usuario [id=" + id + ", nome=" + nome + ", email=" + email + ", dataDeNasc=" + dataDeNasc
-                + ", enderecoU=" + enderecoU + ", usariodao=" + usariodao + "]";
+                + ", enderecoU=" + enderecoU;
     }
     
 }
