@@ -12,8 +12,6 @@ public class Conexao {
         } catch (Exception e) {
             throw new RuntimeException(e);
         
-
-            
         }
     }
 }

@@ -1,11 +1,12 @@
 package com.example.Entidades;
 
-import java.time.LocalDate;
+import java.sql.Date;
+
 
 public class UsuarioProprietario extends Usuario {
 
-    public UsuarioProprietario(String nome, String email, LocalDate dataDeNasc, Endereco enderecoU) {
-        super(nome, email, dataDeNasc, enderecoU);
+    public UsuarioProprietario(int id,String nome, String email,Date dataDeNasc) {
+        super(id,nome, email, dataDeNasc);
         
     }
     
