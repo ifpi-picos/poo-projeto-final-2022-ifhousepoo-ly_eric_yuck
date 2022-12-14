@@ -23,7 +23,4 @@ public class Aluguel {
     public void setAlugado(boolean alugado) {
         this.alugado = alugado;
     }
-
-    
-
 }
