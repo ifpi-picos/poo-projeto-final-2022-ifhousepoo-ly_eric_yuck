@@ -7,7 +7,7 @@ import com.example.Entidades.Endereco;
 
 public interface IEndereco {
     public abstract Endereco SalvarEndereco(Endereco endereco);
-    public abstract void    Remover(int endereco) throws SQLException;
+    public abstract void  Remover(int endereco) throws SQLException;
     public abstract Endereco Alterar(Endereco endereco);
-    public abstract List Listar() throws SQLException;
+    public abstract List<Endereco> Listar() throws SQLException;
 }

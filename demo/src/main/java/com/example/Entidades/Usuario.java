@@ -5,11 +5,15 @@ import java.util.List;
 import java.sql.SQLException;
 import com.example.BD.TableDao.UsuarioDao;
 public class Usuario {
+    
+    
+
     private int id;
     private String nome;
     private String email;
     private Date dataDeNasc;
     private Endereco enderecoU;
+    
     
     public Usuario(int id, String nome, String email,Date dataDeNasc) {
         this.id = id;
@@ -18,6 +22,8 @@ public class Usuario {
         this.dataDeNasc = dataDeNasc;
     
     }
+
+    
     
     public Usuario() {
     }
@@ -69,6 +75,12 @@ public class Usuario {
         return "Usuario [id=" + id + ", nome=" + nome + ", email=" + email + ", dataDeNasc=" + dataDeNasc
                 + ", enderecoU=" + enderecoU;
     }
+    public void statusU(int usuario1) throws SQLException{
+        
+        List <Usuario> usuarios = usariodao.ListarUsuario(usuario1);
+        for(Usuario usuario: usuarios){
+       System.out.println(usuario);
     
 }
-
+    }
+}
