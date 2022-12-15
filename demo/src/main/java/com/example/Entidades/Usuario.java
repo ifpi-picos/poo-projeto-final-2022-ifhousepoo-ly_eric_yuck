@@ -6,14 +6,15 @@ import java.sql.SQLException;
 import com.example.BD.TableDao.UsuarioDao;
 public class Usuario {
     
-    
-
     private int id;
     private String nome;
     private String email;
     private Date dataDeNasc;
     private Endereco enderecoU;
-    
+
+
+    public Usuario() {
+    }
     
     public Usuario(int id, String nome, String email,Date dataDeNasc) {
         this.id = id;
@@ -23,10 +24,7 @@ public class Usuario {
     
     }
 
-    
-    
-    public Usuario() {
-    }
+      
     public String getNome() {
         return nome;
     }
@@ -70,6 +68,7 @@ public class Usuario {
     System.out.println(usuario);
     }
     }
+    
     
     public String toString() {
         return "Usuario [id=" + id + ", nome=" + nome + ", email=" + email + ", dataDeNasc=" + dataDeNasc

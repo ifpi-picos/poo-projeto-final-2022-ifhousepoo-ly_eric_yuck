@@ -19,6 +19,36 @@
   </properties>
 
   <dependencies>
+    
+
+    <dependency>
+      <groupId>com.javafx</groupId>
+      <artifactId>scenario</artifactId>
+      <version>1.0.1</version>
+    </dependency>
+
+
+    <dependency>
+      <groupId>com.raelity.jfx</groupId>
+      <artifactId>javafx-maven-archetypes</artifactId>
+      <version>0.0.1</version>
+      <type>pom</type>
+    </dependency>
+
+
+    <dependency>
+      <groupId>org.openjfx</groupId>
+      <artifactId>javafx</artifactId>
+      <version>20-ea+11</version>
+      <type>pom</type>
+    </dependency>
+
+    <dependency>
+      <groupId>com.mooltiverse.oss.nyx</groupId>
+      <artifactId>java</artifactId>
+      <version>1.3.0</version>
+    </dependency>
+
 
     <dependency>
       <groupId>org.hibernate</groupId>

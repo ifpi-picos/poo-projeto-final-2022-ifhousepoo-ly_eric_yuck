@@ -1,8 +1,8 @@
 package com.example;
 
 import java.sql.SQLException;
-import java.time.LocalDate;
 
+import java.time.LocalDate;
 import com.example.BD.TableDao.EnderecoDao;
 import com.example.BD.TableDao.ImovelDao;
 import com.example.BD.TableDao.UsuarioDao;
@@ -11,7 +11,7 @@ import com.example.Entidades.Imovel;
 import com.example.Entidades.Usuario;
 
 public class App 
-{
+{ 
     public static void main( String[] args ) throws SQLException  
     {
         System.out.println( "Hello World!" );
@@ -35,6 +35,6 @@ data = sqldate.toLocalDate();
         ImovelDao imovelDao = new ImovelDao();
      //  imovelDao.SalvarImovel(imovel);
       //  imovel.status();
-        
+    
     }
 }
