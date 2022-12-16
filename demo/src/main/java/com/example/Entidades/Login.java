@@ -4,15 +4,14 @@ public class Login {
     private String user;
     private String senha;
 
-    
-    public String getUser() {
-        return user;
+    public Login() {
     }
-    
-    
     public Login(String user, String senha) {
         this.user = user;
         this.senha = senha;
+    }
+    public String getUser() {
+        return user;
     }
 
     public void setUuer(String uuer) {
@@ -27,8 +26,6 @@ public class Login {
         this.senha = senha;
     }
 
-
-    
 }
 
 

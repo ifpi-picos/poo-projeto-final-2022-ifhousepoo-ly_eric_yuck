@@ -11,10 +11,8 @@ import java.util.List;
 import com.example.BD.Interface.IUsuario;
 import com.example.Entidades.Usuario;
 import com.example.conexaoBD.Conexao;
-
 public class UsuarioDao implements IUsuario{
 
-    
     public Usuario Salvar(Usuario usuario) {
         try {
             Connection connection =  Conexao.connection();
@@ -24,6 +22,7 @@ public class UsuarioDao implements IUsuario{
             pstm.setString(2, usuario.getNome());
             pstm.setString(3, usuario.getEmail());
             pstm.setDate(4, new java.sql.Date(usuario.getDataDeNasc().getTime()));
+            
 
             pstm.executeUpdate();
         } catch (Exception e) {
