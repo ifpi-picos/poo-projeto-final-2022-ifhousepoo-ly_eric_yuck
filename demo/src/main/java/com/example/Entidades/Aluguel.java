@@ -1,17 +1,25 @@
 package com.example.Entidades;
 
-import java.time.LocalDate;
+import java.util.Date;
+
 
 public class Aluguel {
-    private LocalDate dataDeIn;
-    private LocalDate dataDeFim;
+    private Date dataDeIn;
+    private Date dataDeFim;
     private Imovel imovel;
     private boolean alugado;
+    private int idImovel = imovel.getCodigo();
 
-    public LocalDate getDataDeIn() {
+    public Aluguel(Date dataDeIn, Date dataDeFim, int idImovel, boolean alugado) {
+        this.dataDeIn = dataDeIn;
+        this.dataDeFim = dataDeFim;
+        this.idImovel = idImovel;
+        this.alugado = alugado;
+    }
+    public Date getDataDeIn() {
         return dataDeIn;
     }
-    public LocalDate getDataDeFim() {
+    public Date getDataDeFim() {
         return dataDeFim;
     }
     public Imovel getImovel() {
@@ -22,5 +30,8 @@ public class Aluguel {
     }
     public void setAlugado(boolean alugado) {
         this.alugado = alugado;
+    }
+    public int getIdImovel() {
+        return idImovel;
     }
 }

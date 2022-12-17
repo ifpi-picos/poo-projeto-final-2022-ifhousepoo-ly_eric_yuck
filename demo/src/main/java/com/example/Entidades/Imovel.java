@@ -9,21 +9,21 @@ import com.example.BD.TableDao.ImovelDao;
 public class Imovel {
     private int codigo;
     private String descricao;
+    private Date dataDeCadastro;
     private double valorDoAluguel;
     private Endereco enderecoI;
-    private Date dataDeCadastro;
     private ArrayList<Imovel> imoveis;
     
-    public Imovel(String descricao, double valorDoAlugue, Endereco enderecoI) {
+    public Imovel(String descricao, double valorDoAluguel, Endereco enderecoI) {
         this.descricao = descricao;
-        this.valorDoAluguel = valorDoAlugue;
+        this.valorDoAluguel = valorDoAluguel;
         this.enderecoI = enderecoI;
     }
 
-    public Imovel(int codigo ,String descricao, double valorDoAlugue, Date dataDeCadastro) {
+    public Imovel(int codigo ,String descricao, double valorDoAluguel, Date dataDeCadastro) {
         this.codigo = codigo;
         this.descricao = descricao;
-        this.valorDoAluguel = valorDoAlugue;
+        this.valorDoAluguel = valorDoAluguel;
         this.dataDeCadastro = dataDeCadastro;
     }
     
@@ -68,7 +68,6 @@ public void status() throws SQLException{
     }
 
 }
-
 
 @Override
 public String toString() {
