@@ -30,15 +30,15 @@ public class LoginDao implements Ilogin {
 
     @Override
     public ResultSet auntenticacaoDoLogin(String user, String password) throws SQLException {
-        
+        ResultSet rs;
         Connection connection = Conexao.connection();
         String sql = "SELECT * FROM logins WHERE  usuario = ? AND senha = ?";
         PreparedStatement pstm = connection.prepareStatement(sql);
 
         pstm.setString(1, user);
         pstm.setString(2, password);
-        ResultSet  rs = pstm.executeQuery();
-        rs.next();
+          rs = pstm.executeQuery();
+
         
         return rs;
 

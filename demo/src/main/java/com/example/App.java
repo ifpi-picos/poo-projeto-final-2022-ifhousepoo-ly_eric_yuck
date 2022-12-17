@@ -10,6 +10,7 @@ import javax.swing.JOptionPane;
 import com.example.BD.TableDao.LoginDao;
 import com.example.BD.TableDao.UsuarioDao;
 import com.example.Entidades.Login;
+import com.example.System.SystemLoguin;
 
 public class App 
 { 
@@ -25,8 +26,10 @@ data = sqldate.toLocalDate();
     LoginDao loginDao = new LoginDao();
     Login login = new Login("eric550","eric12");
     ResultSet rs =  loginDao.auntenticacaoDoLogin("eric550", "eric12");
-    
-    JOptionPane.showMessageDialog(null,"oi "+ rs.getString("idUsuario"));
+
+   // JOptionPane.showMessageDialog(null,"oi "+ rs.getString("usuario"));
+
+   new SystemLoguin();
      
     }
 }
