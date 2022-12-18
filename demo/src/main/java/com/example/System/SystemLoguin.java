@@ -37,8 +37,6 @@ public class SystemLoguin  implements ActionListener {
         jframe2.add(jbutton);
 
 
-
-
         n1 = new JTextField(10);
         n1.setBounds(280, 150, 250, 50);
         n1.setFont(new Font("Arial", Font.BOLD, 30));
@@ -72,6 +70,8 @@ public class SystemLoguin  implements ActionListener {
         jLabel3.setForeground(new Color(200, 70, 85));
         jLabel3.setBackground(new Color(255, 255, 255));
 
+
+
         JButton jbutton2 = new JButton("CADASTRAR");
         jbutton2.setBounds(20, 420, 160, 30);
         jbutton2.setFont(new Font("Arial", Font.BOLD, 20));
@@ -99,6 +99,8 @@ public class SystemLoguin  implements ActionListener {
         jbutton2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                new SystemPropietario();
+                jframe2.setVisible(false);
 
             }
         });

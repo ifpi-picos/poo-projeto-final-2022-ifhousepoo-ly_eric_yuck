@@ -11,6 +11,9 @@ import java.util.List;
 import com.example.BD.Interface.IUsuario;
 import com.example.Entidades.Usuario;
 import com.example.conexaoBD.Conexao;
+
+import javax.swing.*;
+
 public class UsuarioDao implements IUsuario{
 
     public Usuario Salvar(Usuario usuario) {
@@ -25,8 +28,9 @@ public class UsuarioDao implements IUsuario{
             
 
             pstm.executeUpdate();
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (SQLException sqlException) {
+            JOptionPane.showMessageDialog(null,"dados existentes"+ sqlException.getMessage());
+            sqlException.printStackTrace();
             
         }
                      

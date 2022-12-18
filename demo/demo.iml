@@ -10,6 +10,7 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="Maven: com.github.adedayo.intellij.sdk:javaFX:142.1" level="project" />
     <orderEntry type="library" name="Maven: com.javafx:scenario:1.0.1" level="project" />
     <orderEntry type="library" name="Maven: com.mooltiverse.oss.nyx:java:1.3.0" level="project" />
     <orderEntry type="library" name="Maven: org.hibernate.validator:hibernate-validator:8.0.0.Final" level="project" />

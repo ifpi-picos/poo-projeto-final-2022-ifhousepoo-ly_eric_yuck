@@ -13,6 +13,7 @@ public class Imovel {
     private double valorDoAluguel;
     private Endereco enderecoI;
     private ArrayList<Imovel> imoveis;
+    private int idUsuario;
     
     public Imovel(String descricao, double valorDoAluguel, Endereco enderecoI) {
         this.descricao = descricao;
@@ -20,11 +21,12 @@ public class Imovel {
         this.enderecoI = enderecoI;
     }
 
-    public Imovel(int codigo ,String descricao, double valorDoAluguel, Date dataDeCadastro) {
+    public Imovel(int codigo ,String descricao, double valorDoAluguel, Date dataDeCadastro,int idUsuario ) {
         this.codigo = codigo;
         this.descricao = descricao;
         this.valorDoAluguel = valorDoAluguel;
         this.dataDeCadastro = dataDeCadastro;
+        this.idUsuario = idUsuario;
     }
     
     public String getDescricao() {
@@ -73,6 +75,15 @@ public void status() throws SQLException{
 public String toString() {
     return "Imovel [codigo=" + codigo + ", descricao=" + descricao + ", valorDoAluguel=" + valorDoAluguel
             + ", dataDeCadastro=" + dataDeCadastro + "]";
+}
+
+
+public double getValorDoAluguel() {
+    return valorDoAluguel;
+}
+
+public int getIdUsuario() {
+    return idUsuario;
 }
 
 }

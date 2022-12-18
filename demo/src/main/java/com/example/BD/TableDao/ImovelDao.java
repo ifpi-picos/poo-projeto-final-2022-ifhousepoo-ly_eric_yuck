@@ -19,13 +19,14 @@ public class ImovelDao  implements IImovel{
 try{
         Connection connection = Conexao.connection();
 
-        String sql = "INSERT INTO imoveis (código,descrição,data_De_Cadastro,valorDoAluguel) VALUES (?,?,?,?)";
+        String sql = "INSERT INTO imoveis (código,descrição,data_De_Cadastro,valorDoAluguel,id_usuario) VALUES (?,?,?,?,?)";
         PreparedStatement pstm =  connection.prepareStatement(sql,PreparedStatement.RETURN_GENERATED_KEYS);
 
         pstm.setInt(1, Imovel.getCodigo());
         pstm.setString(2, Imovel.getDescricao());
         pstm.setDate(3, new java.sql.Date(Imovel.getDataDeCadastro().getTime()));
         pstm.setDouble(4, Imovel.getValorDoAlugue());
+        pstm.setInt(5, Imovel.getIdUsuario());
 
         pstm.executeUpdate();
 }
@@ -90,8 +91,9 @@ return Imovel;
         String descricao = rs.getString("descrição");
        double valorDoAluguel = rs.getDouble("valorDoAluguel");
        Date dataDeCadastro = rs.getDate("data_De_Cadastro");
+       int id_usuario = rs.getInt("id_usuario");
 
-       Imovel imovel = new Imovel(codigo, descricao, valorDoAluguel, dataDeCadastro);
+       Imovel imovel = new Imovel(codigo, descricao, valorDoAluguel, dataDeCadastro,id_usuario);
        imoveis.add(imovel);
                       
     }
