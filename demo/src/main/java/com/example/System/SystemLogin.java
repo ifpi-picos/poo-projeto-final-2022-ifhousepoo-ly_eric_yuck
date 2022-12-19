@@ -10,14 +10,14 @@ import java.awt.event.ActionListener;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class SystemLoguin  implements ActionListener {
+public class SystemLogin  implements ActionListener {
     JTextField n1;
     JTextField n2;
 
 
     Usuario user = new Usuario();
 
-    public SystemLoguin() {
+    public SystemLogin() {
 
 
         JFrame jframe2 = new JFrame("IMOBILIARIA");
@@ -97,7 +97,7 @@ public class SystemLoguin  implements ActionListener {
         jbutton2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new SystemPropietario();
+                new SystemProprietario();
                 jframe2.setVisible(false);
 
             }
