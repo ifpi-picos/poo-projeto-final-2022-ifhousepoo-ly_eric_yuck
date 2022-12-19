@@ -70,8 +70,6 @@ public class SystemLoguin  implements ActionListener {
         jLabel3.setForeground(new Color(200, 70, 85));
         jLabel3.setBackground(new Color(255, 255, 255));
 
-
-
         JButton jbutton2 = new JButton("CADASTRAR");
         jbutton2.setBounds(20, 420, 160, 30);
         jbutton2.setFont(new Font("Arial", Font.BOLD, 20));
@@ -109,7 +107,10 @@ public class SystemLoguin  implements ActionListener {
 
     }
 
+    @Override
+    public void actionPerformed(ActionEvent e) {
 
+    }
     public void login() throws SQLException {
 
         try {
@@ -126,9 +127,4 @@ public class SystemLoguin  implements ActionListener {
         }
     }
 
-
-    @Override
-    public void actionPerformed(ActionEvent e) {
-
-    }
 }
