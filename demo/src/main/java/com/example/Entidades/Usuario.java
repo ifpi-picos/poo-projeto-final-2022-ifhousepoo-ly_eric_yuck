@@ -16,7 +16,7 @@ public class Usuario {
     public Usuario() {
     }
     
-    public Usuario(int id, String nome, String email,Date dataDeNasc) {
+    public Usuario(int id,String nome, String email,Date dataDeNasc) {
         this.id = id;
         this.nome = nome;
         this.email = email;
@@ -24,7 +24,12 @@ public class Usuario {
     
     }
 
-      
+    public Usuario(String nome, String email, Date dataDeNasc) {
+        this.nome = nome;
+        this.email = email;
+        this.dataDeNasc = dataDeNasc;
+    }
+
     public String getNome() {
         return nome;
     }

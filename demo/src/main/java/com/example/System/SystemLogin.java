@@ -1,89 +1,56 @@
 package com.example.System;
+
 import com.example.BD.TableDao.LoginDao;
-import com.example.Entidades.Usuario;
 
 import javax.swing.*;
-import java.awt.Color;
-import java.awt.Font;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class SystemLogin  implements ActionListener {
-    JTextField n1;
-    JTextField n2;
+public class SystemLogin {
 
-
-    Usuario user = new Usuario();
+    JPasswordField txtPass;
+    JTextField textUser;
 
     public SystemLogin() {
 
+        JFrame frame = new JFrame();
+        frame.setSize(500, 350);
+        frame.setBounds(100, 100, 450, 350);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.getContentPane().setLayout(null);
+        frame.setLocationRelativeTo(null);
 
-        JFrame jframe2 = new JFrame("IMOBILIARIA");
-        jframe2.setSize(800, 500);
-        jframe2.setDefaultCloseOperation(jframe2.EXIT_ON_CLOSE);
-        jframe2.setResizable(false);
-        jframe2.setLocationRelativeTo(null);
-        jframe2.setLayout(null);
+        JLabel lblNewLabel = new JLabel("Username");
+        lblNewLabel.setBounds(125, 120, 77, 14);
+        frame.getContentPane().add(lblNewLabel);
+
+        JLabel lblNewLabel_1 = new JLabel("Password");
+        lblNewLabel_1.setBounds(125, 150, 71, 14);
+        frame.getContentPane().add(lblNewLabel_1);
+
+        textUser = new JTextField();
+        textUser.setBounds(200, 120, 119, 20);
+        frame.getContentPane().add(textUser);
+        textUser.setColumns(10);
+
+        JCheckBox Remember = new JCheckBox("Remember password?");
+        Remember.setBounds(250, 200, 164, 23);
+        frame.getContentPane().add(Remember);
+
+        JLabel lblMessager = new JLabel("");
+        lblMessager.setFont(new Font("Tahoma", Font.PLAIN, 12));
+        lblMessager.setBounds(21, 208, 265, 26);
+        frame.getContentPane().add(lblMessager);
+
+        frame.setVisible(true);
+
+        JButton btnLogin = new JButton("Login");
+        btnLogin.addActionListener(new ActionListener() {
 
 
-        JButton jbutton = new JButton("ENTRAR");
-        jbutton.setBounds(280, 350, 250, 70);
-        jbutton.setFont(new Font("Arial", Font.BOLD, 30));
-        jbutton.setForeground(new Color(70, 103, 200));
-        jbutton.setBackground(new Color(12, 15, 10));
-
-        jframe2.add(jbutton);
-
-
-        n1 = new JTextField(10);
-        n1.setBounds(280, 150, 250, 50);
-        n1.setFont(new Font("Arial", Font.BOLD, 30));
-        n1.setForeground(new Color(70, 103, 200));
-        n1.setBackground(new Color(255, 255, 255));
-
-        n2 = new JTextField(10);
-        n2.setBounds(280, 250, 250, 50);
-        n2.setFont(new Font("Arial", Font.BOLD, 30));
-        n2.setForeground(new Color(70, 103, 200));
-        n2.setBackground(new Color(255, 255, 255));
-
-        jframe2.add(n1);
-        jframe2.add(n2);
-
-        JLabel jLabel = new JLabel("USUARIO:");
-        jLabel.setBounds(280, 100, 280, 50);
-        jLabel.setFont(new Font("Arial", Font.BOLD, 30));
-        jLabel.setForeground(new Color(70,103,200));
-        jLabel.setBackground(new Color(255, 255, 255));
-
-        JLabel jLabel2 = new JLabel("SENHA:");
-        jLabel2.setBounds(280, 200, 280, 50);
-        jLabel2.setFont(new Font("Arial", Font.BOLD, 30));
-        jLabel2.setForeground(new Color(70,103,200));
-        jLabel2.setBackground(new Color(255, 255, 255));
-
-        JLabel jLabel3 = new JLabel("LOGIN");
-        jLabel3.setBounds(350, 25, 250, 70);
-        jLabel3.setFont(new Font("Helvetica", Font.BOLD, 30));
-        jLabel3.setForeground(new Color(200, 70, 85));
-        jLabel3.setBackground(new Color(255, 255, 255));
-
-        JButton jbutton2 = new JButton("CADASTRAR");
-        jbutton2.setBounds(20, 420, 160, 30);
-        jbutton2.setFont(new Font("Arial", Font.BOLD, 20));
-        jbutton2.setForeground(new Color(127, 166, 187, 255));
-        jbutton2.setBackground(new Color(255, 255, 255, 255));
-
-        jframe2.add(jbutton);
-        jframe2.add(jbutton2);
-        jframe2.add(jLabel);
-        jframe2.add(jLabel2);
-        jframe2.add(jLabel3);
-        jframe2.add(jbutton2);
-        jbutton.addActionListener(new ActionListener() {
-            @Override
             public void actionPerformed(ActionEvent e) {
                 try {
                     login();
@@ -92,39 +59,49 @@ public class SystemLogin  implements ActionListener {
                 }
             }
         });
+        btnLogin.setBounds(150, 250, 71, 23);
+        frame.getContentPane().add(btnLogin);
 
 
-        jbutton2.addActionListener(new ActionListener() {
+        JLabel lblLogin = new JLabel("Login");
+        lblLogin.setFont(new Font("Segoe UI Symbol", Font.PLAIN, 26));
+        lblLogin.setBounds(200, 40, 68, 40);
+        frame.getContentPane().add(lblLogin);
+
+        txtPass = new JPasswordField();
+        txtPass.setBounds(200, 150, 119, 20);
+        frame.getContentPane().add(txtPass);
+
+        JButton btnCadastro = new JButton("Cadastro");
+
+        btnCadastro.addActionListener(new ActionListener() {
+
             @Override
             public void actionPerformed(ActionEvent e) {
-                new SystemProprietario();
-                jframe2.setVisible(false);
-
+                new SystemUsuario();
+                frame.dispose();
             }
+
+
         });
-        jframe2.setVisible(true);
-
-
-    }
-
-    @Override
-    public void actionPerformed(ActionEvent e) {
+        btnCadastro.setBounds(250, 250, 90, 23);
+        frame.getContentPane().add(btnCadastro);
 
     }
+
     public void login() throws SQLException {
 
         try {
             LoginDao loginDao = new LoginDao();
 
-            ResultSet rs = loginDao.auntenticacaoDoLogin(String.valueOf(n1.getText()), String.valueOf(n2.getText()));
+            ResultSet rs = loginDao.auntenticacaoDoLogin(String.valueOf(textUser.getText()), String.valueOf(txtPass.getPassword()));
 
             if (rs.next())
-                user.status();
+                JOptionPane.showMessageDialog(null,"menu deve ser iniicado!!");
             else
-                JOptionPane.showMessageDialog(null, "erro");
+                JOptionPane.showMessageDialog(null, "usuário ou senha incorreto!!");
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null,"erro ao autenticar"+e.getMessage());
+            JOptionPane.showMessageDialog(null, "erro ao autenticar" + e.getMessage());
         }
     }
-
 }

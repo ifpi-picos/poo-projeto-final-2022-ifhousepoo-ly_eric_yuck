@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.example.BD.Interface.IUsuario;
+import com.example.Entidades.Endereco;
 import com.example.Entidades.Usuario;
 import com.example.conexaoBD.Conexao;
 
@@ -19,15 +20,20 @@ public class UsuarioDao implements IUsuario{
     public Usuario Salvar(Usuario usuario) {
         try {
             Connection connection =  Conexao.connection();
-            String sql = "INSERT INTO usuario (id, nome, email, data_nas) VALUES (?,?,?,?)";
+            String sql = "INSERT INTO usuario (nome, email, data_nas) VALUES (?,?,?)";
             PreparedStatement pstm = connection.prepareStatement(sql,PreparedStatement.RETURN_GENERATED_KEYS);
-            pstm.setInt(1, usuario.getId());
-            pstm.setString(2, usuario.getNome());
-            pstm.setString(3, usuario.getEmail());
-            pstm.setDate(4, new java.sql.Date(usuario.getDataDeNasc().getTime()));
+            pstm.setString(1, usuario.getNome());
+            pstm.setString(2, usuario.getEmail());
+            pstm.setDate(3, new java.sql.Date(usuario.getDataDeNasc().getTime()));
             
-
             pstm.executeUpdate();
+
+            ResultSet rs = pstm.getGeneratedKeys();
+            rs.next();
+
+            usuario.setId(rs.getInt(1));
+
+
         } catch (SQLException sqlException) {
             JOptionPane.showMessageDialog(null,"dados existentes"+ sqlException.getMessage());
             sqlException.printStackTrace();

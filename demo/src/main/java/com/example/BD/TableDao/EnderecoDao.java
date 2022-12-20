@@ -13,17 +13,19 @@ import com.example.conexaoBD.Conexao;
 public class EnderecoDao implements IEndereco {
 
     @Override
-    public Endereco SalvarEndereco(Endereco endereco) {
+    public Endereco SalvarEndereco(Endereco endereco, int idUsuario) {
 
         try {
             Connection connection = Conexao.connection();
-            String sql = "INSERT INTO endereco (estado , cidade , bairro , logradouro , numero) VALUES (?,?,?,?,?)";
+            String sql = "INSERT INTO endereco (estado , cidade , bairro , logradouro , numero ,cep ,idUsuario) VALUES (?,?,?,?,?,?,?)";
             PreparedStatement pstm = connection.prepareStatement(sql,PreparedStatement.RETURN_GENERATED_KEYS);
             pstm.setString(1, endereco.getEstado());
             pstm.setString(2, endereco.getCidade());
             pstm.setString(3, endereco.getBairro());
             pstm.setString(4, endereco.getLogradouro());
             pstm.setInt(5, endereco.getNumero());
+            pstm.setString(6, endereco.getCep());
+            pstm.setInt(7, idUsuario);
             pstm.executeUpdate();
             
         } catch (SQLException e) {
@@ -83,7 +85,8 @@ public class EnderecoDao implements IEndereco {
      String bairro = rs.getString("bairro");
      String logradouro = rs.getString("logradouro");
      int numero = rs.getInt("numero");
-     Endereco endereco = new Endereco(estado, cidade, bairro, logradouro, numero);
+     String cep = rs.getString("cep");
+     Endereco endereco = new Endereco(estado, cidade, bairro, logradouro, numero,cep);
      enderecos.add(endereco);
 
         }

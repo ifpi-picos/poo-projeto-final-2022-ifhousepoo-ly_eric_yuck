@@ -6,13 +6,15 @@ public class Endereco {
     private String bairro;
     private String logradouro;
     private int numero;
+    private String cep;
     
-    public Endereco(String estado, String cidade, String bairro, String logradouro, int numero) {
+    public Endereco(String estado, String cidade, String bairro, String logradouro, int numero,String cep) {
         this.estado = estado;
         this.cidade = cidade;
         this.bairro = bairro;
         this.logradouro = logradouro;
         this.numero = numero;
+        this.cep = cep;
     }
     public String getEstado() {
         return estado;
@@ -28,6 +30,10 @@ public class Endereco {
     }
     public int getNumero() {
         return numero;
+    }
+   
+    public String getCep() {
+        return cep;
     }
 
     
