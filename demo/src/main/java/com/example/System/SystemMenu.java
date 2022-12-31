@@ -34,7 +34,7 @@ public class SystemMenu{
         JFrame menuPrincipal =  new JFrame();
     
         jDesktopPane1 = new JDesktopPane();
-        jDesktopPane1.setBackground(new Color(102,102, 255));
+                jDesktopPane1.setBackground(new Color(160,255, 200));
 
         jMenuBar1 = new JMenuBar();
         jMenu1 = new JMenu();

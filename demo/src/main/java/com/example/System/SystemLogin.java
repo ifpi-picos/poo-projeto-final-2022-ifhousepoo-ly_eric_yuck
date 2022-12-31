@@ -11,44 +11,65 @@ import java.sql.SQLException;
 
 public class SystemLogin {
 
-    JPasswordField txtPass;
-    JTextField textUser;
-    JFrame frame = new JFrame();
+   private JPasswordField jtSenha;
+   private JTextField jtUsuario;
+   private JFrame  frame;
+   private JLabel  jlUsuario;
+   private JLabel  jlSenha;
+   private JLabel  lblImobiliaria;
+   private JLabel  lblLogin;
+   private JButton btnLogin;
+   private JButton btnCadastro;
+   private JDesktopPane jDesktopPane1;
     
     public SystemLogin() {
+        jDesktopPane1 = new JDesktopPane();
+        jDesktopPane1.setBackground(new Color(160,255, 200));
 
-        
+        frame = new JFrame();
         frame.setSize(500, 350);
         frame.setBounds(100, 100, 450, 350);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.getContentPane().setLayout(null);
         frame.setLocationRelativeTo(null);
 
-        JLabel lblNewLabel = new JLabel("Username");
-        lblNewLabel.setBounds(125, 120, 77, 14);
-        frame.getContentPane().add(lblNewLabel);
+        jlUsuario = new JLabel("Username");
+        jlUsuario.setBounds(125, 120, 77, 14);
+        frame.getContentPane().add(jlUsuario);
 
-        JLabel lblNewLabel_1 = new JLabel("Password");
-        lblNewLabel_1.setBounds(125, 150, 71, 14);
-        frame.getContentPane().add(lblNewLabel_1);
+        jlSenha = new JLabel("Password");
+        jlSenha.setBounds(125, 150, 71, 14);
+        frame.getContentPane().add(jlSenha);
 
-        textUser = new JTextField();
-        textUser.setBounds(200, 120, 119, 20);
-        frame.getContentPane().add(textUser);
-        textUser.setColumns(10);
+        lblImobiliaria = new JLabel("IMOBILIARIA YDE");
+        lblImobiliaria.setFont(new Font("Segoe UI Symbol", Font.BOLD, 17));
+        lblImobiliaria.setBounds(170, 5, 265, 26);
+        frame.getContentPane().add(lblImobiliaria);
+
+        lblLogin = new JLabel("Login");
+        lblLogin.setFont(new Font("Segoe UI Symbol", Font.PLAIN, 26));
+        lblLogin.setBounds(200, 50, 68, 40);
+        frame.getContentPane().add(lblLogin);
+
+        jtUsuario = new JTextField();
+        jtUsuario.setBounds(200, 120, 119, 20);
+        frame.getContentPane().add(jtUsuario);
+        jtUsuario.setColumns(10);
+
+        jtSenha = new JPasswordField();
+        jtSenha.setBounds(200, 150, 119, 20);
+        frame.add(jtSenha);
 
         JCheckBox Remember = new JCheckBox("Remember password?");
-        Remember.setBounds(250, 200, 164, 23);
-        frame.getContentPane().add(Remember);
+        Remember.setBounds(190, 170, 164, 23);
+        Remember.setBackground(new Color(160,255, 200));
 
-        JLabel lblMessager = new JLabel("");
-        lblMessager.setFont(new Font("Tahoma", Font.PLAIN, 12));
-        lblMessager.setBounds(21, 208, 265, 26);
-        frame.getContentPane().add(lblMessager);
-
+        
+        frame.add(Remember);
+        
         frame.setVisible(true);
 
-        JButton btnLogin = new JButton("Login");
+        btnLogin = new JButton("Login");
         btnLogin.addActionListener(new ActionListener() {
 
 
@@ -60,20 +81,10 @@ public class SystemLogin {
                 }
             }
         });
-        btnLogin.setBounds(150, 250, 71, 23);
+        btnLogin.setBounds(150, 230, 71, 23);
         frame.getContentPane().add(btnLogin);
 
-
-        JLabel lblLogin = new JLabel("Login");
-        lblLogin.setFont(new Font("Segoe UI Symbol", Font.PLAIN, 26));
-        lblLogin.setBounds(200, 40, 68, 40);
-        frame.getContentPane().add(lblLogin);
-
-        txtPass = new JPasswordField();
-        txtPass.setBounds(200, 150, 119, 20);
-        frame.getContentPane().add(txtPass);
-
-        JButton btnCadastro = new JButton("Cadastro");
+         btnCadastro = new JButton("Cadastro");
 
         btnCadastro.addActionListener(new ActionListener() {
 
@@ -83,19 +94,31 @@ public class SystemLogin {
                 frame.dispose();
             }
 
-
         });
-        btnCadastro.setBounds(250, 250, 90, 23);
-        frame.getContentPane().add(btnCadastro);
+        btnCadastro.setBounds(250, 230, 90, 23);
+        frame.add(btnCadastro);
+
+
+        javax.swing.GroupLayout layout = new GroupLayout(frame.getContentPane());
+        frame.getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(GroupLayout.Alignment.LEADING).addComponent(jDesktopPane1)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+            .addComponent(jDesktopPane1)
+        );
+
 
     }
+    
 
     public void login() throws SQLException {
 
         try {
             LoginDao loginDao = new LoginDao();
 
-            ResultSet rs = loginDao.auntenticacaoDoLogin(String.valueOf(textUser.getText()), String.valueOf(txtPass.getPassword()));
+            ResultSet rs = loginDao.auntenticacaoDoLogin(String.valueOf(jtUsuario.getText()), String.valueOf(jtSenha.getPassword()));
 
             if (rs.next()){
                 frame.dispose();
