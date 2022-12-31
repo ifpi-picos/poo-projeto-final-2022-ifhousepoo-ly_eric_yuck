@@ -13,10 +13,11 @@ public class SystemLogin {
 
     JPasswordField txtPass;
     JTextField textUser;
-
+    JFrame frame = new JFrame();
+    
     public SystemLogin() {
 
-        JFrame frame = new JFrame();
+        
         frame.setSize(500, 350);
         frame.setBounds(100, 100, 450, 350);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -96,10 +97,12 @@ public class SystemLogin {
 
             ResultSet rs = loginDao.auntenticacaoDoLogin(String.valueOf(textUser.getText()), String.valueOf(txtPass.getPassword()));
 
-            if (rs.next())
-                JOptionPane.showMessageDialog(null,"menu deve ser iniicado!!");
-            else
-                JOptionPane.showMessageDialog(null, "usuário ou senha incorreto!!");
+            if (rs.next()){
+                frame.dispose();
+                new SystemMenu();
+                
+        }else
+            JOptionPane.showMessageDialog(null, "usuário ou senha incorreto!!");
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "erro ao autenticar" + e.getMessage());
         }

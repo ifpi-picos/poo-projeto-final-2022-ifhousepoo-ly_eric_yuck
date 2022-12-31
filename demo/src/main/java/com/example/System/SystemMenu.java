@@ -29,7 +29,7 @@ public class SystemMenu{
     private JMenuItem jMenuitem8;
     private JMenuItem jMenuitem9;
     
-    public void systemMenu(){
+    public SystemMenu(){
 
         JFrame menuPrincipal =  new JFrame();
     
@@ -55,6 +55,7 @@ public class SystemMenu{
         jMenu4 = new JMenu();
 
         menuPrincipal.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        menuPrincipal.setSize(500, 350);
         menuPrincipal.setTitle("Menu Principal");
 
         GroupLayout jDeskotopPnae1Layout = new GroupLayout(jDesktopPane1);
@@ -120,8 +121,12 @@ public class SystemMenu{
         layout.setHorizontalGroup(
             layout.createParallelGroup(GroupLayout.Alignment.LEADING).addComponent(jDesktopPane1)
         );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+            .addComponent(jDesktopPane1)
+        );
 
-        menuPrincipal.pack();
+
         menuPrincipal.setLocationRelativeTo(null);
         menuPrincipal.setVisible(true);
 
