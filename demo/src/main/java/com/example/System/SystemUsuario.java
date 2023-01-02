@@ -6,8 +6,6 @@ import com.example.BD.TableDao.UsuarioDao;
 import com.example.Entidades.Endereco;
 import com.example.Entidades.Login;
 import com.example.Entidades.Usuario;
-import com.mysql.cj.x.protobuf.MysqlxNotice.Frame;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -28,10 +26,11 @@ public class SystemUsuario {
     private JTextField JTnumero;
     private JTextField JTusuario;
     private JTextField JTsenha;
-    private JLabel JLusuario;
-    private JLabel JLsenha;
     private JButton JBcadastro;
     private JButton JBlogin;
+    private JButton JBproximo;
+    private JLabel JLusuario;
+    private JLabel JLsenha;
     private JLabel JLnome;
     private JLabel JLemail;
     private JLabel JLcidade;
@@ -44,11 +43,11 @@ public class SystemUsuario {
     private JDesktopPane jDesktopPane1;
     private JDesktopPane jDesktopPane2;
     private JFrame frame;
+    private JFrame frame2;
 
     UsuarioDao usuarioDao = new UsuarioDao();
     EnderecoDao enderecoDao = new EnderecoDao();
     LoginDao loginDao = new LoginDao();
-
 
     public SystemUsuario(){
             jDesktopPane1 = new JDesktopPane();
@@ -57,7 +56,6 @@ public class SystemUsuario {
             jDesktopPane2 = new JDesktopPane();
             jDesktopPane2.setBackground(new Color(160,255, 200));
 
-            
             frame = new JFrame("CADASTRO");
             frame.setSize(500, 350);
             frame.setResizable(false);
@@ -65,9 +63,6 @@ public class SystemUsuario {
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             frame.getContentPane().setLayout(null);
 
-            JPanel panel = new JPanel();
-            panel.setLayout(null);
-            
             JLnome = new JLabel("NOME:");
             JLnome.setBounds(10,20,80,25);
             frame.add(JLnome);
@@ -87,7 +82,6 @@ public class SystemUsuario {
             JLcidade = new JLabel("CIDADE");
             JLcidade.setBounds(10,110,100,25);
             frame.add(JLcidade);
-
 
             JTnumero = new JTextField(20);
             JTnumero.setBounds(100,260,165,25);
@@ -110,13 +104,12 @@ public class SystemUsuario {
             JLnumero.setBounds(10,260,80,25);
             frame.add(JLnumero);
 
-
-            JTnome = new JTextField(20);
-            JTnome.setBounds(100,50,165,25);
+            JTnome = new JTextField();
+            JTnome.setBounds(100,20,165,25);
             frame.add(JTnome);
 
             JTemail = new JTextField(20);
-            JTemail.setBounds(100,20,165,25);
+            JTemail.setBounds(100,50,165,25);
             frame.add(JTemail);
 
             dia = new JTextField(20);
@@ -151,31 +144,27 @@ public class SystemUsuario {
             JTcep.setBounds(100,230,165,25);
             frame.add(JTcep);
 
-            JButton jButton = new JButton("PRÓXIMO");
-            jButton.setBounds(330,140,110,25);
-            jButton.setFont(new Font("Segoe UI Symbol", Font.PLAIN, 15));
-            frame.getContentPane().add(jButton);
-            frame.add(jButton);
-
-            JButton log = new JButton("FAZER LOGIN");
-            log.setFont(new Font("Arial", Font.LAYOUT_RIGHT_TO_LEFT, 10));
-
+            JBproximo = new JButton("PRÓXIMO");
+            JBproximo.setBounds(330,140,110,25);
+            JBproximo.setFont(new Font("Segoe UI Symbol", Font.PLAIN, 15));
+            frame.getContentPane().add(JBproximo);
+            frame.add(JBproximo);
 
             javax.swing.GroupLayout layout = new GroupLayout(frame.getContentPane());
-        frame.getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
+            frame.getContentPane().setLayout(layout);
+            layout.setHorizontalGroup(
             layout.createParallelGroup(GroupLayout.Alignment.LEADING).addComponent(jDesktopPane1)
         );
-        layout.setVerticalGroup(
+            layout.setVerticalGroup(
             layout.createParallelGroup(GroupLayout.Alignment.LEADING)
             .addComponent(jDesktopPane1)
         );
-        frame.setVisible(true);
+            frame.setVisible(true);
         
 
                         // TELA 2
 
-        JFrame frame2 = new JFrame("CADASTRO");
+        frame2 = new JFrame("CADASTRO");
         frame2.setSize(500, 350);
 
         frame2.setResizable(false);
@@ -219,16 +208,13 @@ public class SystemUsuario {
             }
         });
 
-            
-
-            JBcadastro.addActionListener(new ActionListener() {
+        JBcadastro.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     finalizarCadastro();
                     JOptionPane.showMessageDialog(JBcadastro, "CADASTRO EFETUADO COM SUCESSO");
                 }
             });
-
 
                 // layout tela 2
                  GroupLayout layout2 = new GroupLayout(frame2.getContentPane());
@@ -240,13 +226,21 @@ public class SystemUsuario {
             layout2.createParallelGroup(GroupLayout.Alignment.LEADING)
             .addComponent(jDesktopPane2)
         );
-        jButton.addActionListener(new ActionListener() {
+        JBproximo.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                
+                if(JTnome.getText().isEmpty()|| JTemail.getText().isEmpty() || dia.getText().isEmpty() ||
+                mes.getText().isEmpty() || dia.getText().isEmpty() || JTcidade.getText().isEmpty() || JTuf.getText().isEmpty()
+                 || JTbairro.getText().isEmpty() || JTlogradouro.getText().isEmpty() || JTcep.getText().isEmpty()
+                 || JTnumero.getText().isEmpty())
+
+              {
+                    JOptionPane.showMessageDialog(null,"campo vazio!!\ntente novamente!!");
+                }
+                else{
                 frame2.setVisible(true);
                 frame.dispose();
-
+                }
             }
         });
 
@@ -286,8 +280,7 @@ public class SystemUsuario {
 
     }
 
-
-    public void cadastrarUsuario(Usuario usuario , Endereco Endereco,Login user ,Login password){
+        public void cadastrarUsuario(Usuario usuario , Endereco Endereco,Login user ,Login password){
 
         usuarioDao.Salvar(usuario);
         enderecoDao.SalvarEndereco(Endereco,usuario.getId());

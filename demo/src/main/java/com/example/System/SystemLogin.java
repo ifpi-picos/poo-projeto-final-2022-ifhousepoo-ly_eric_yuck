@@ -11,7 +11,7 @@ import java.sql.SQLException;
 
 public class SystemLogin {
 
-   private JPasswordField jtSenha;
+   private JPasswordField jpSenha;
    private JTextField jtUsuario;
    private JFrame  frame;
    private JLabel  jlUsuario;
@@ -21,7 +21,7 @@ public class SystemLogin {
    private JButton btnLogin;
    private JButton btnCadastro;
    private JDesktopPane jDesktopPane1;
-    
+   private JCheckBox exibirSenha;
     public SystemLogin() {
         jDesktopPane1 = new JDesktopPane();
         jDesktopPane1.setBackground(new Color(160,255, 200));
@@ -42,8 +42,9 @@ public class SystemLogin {
         frame.getContentPane().add(jlSenha);
 
         lblImobiliaria = new JLabel("IMOBILIARIA YDE");
+        lblImobiliaria.setForeground(new Color(100,0, 245));
         lblImobiliaria.setFont(new Font("Segoe UI Symbol", Font.BOLD, 17));
-        lblImobiliaria.setBounds(170, 5, 265, 26);
+        lblImobiliaria.setBounds(155, 5, 265, 26);
         frame.getContentPane().add(lblImobiliaria);
 
         lblLogin = new JLabel("Login");
@@ -55,17 +56,17 @@ public class SystemLogin {
         jtUsuario.setBounds(200, 120, 119, 20);
         frame.getContentPane().add(jtUsuario);
         jtUsuario.setColumns(10);
-
-        jtSenha = new JPasswordField();
-        jtSenha.setBounds(200, 150, 119, 20);
-        frame.add(jtSenha);
-
-        JCheckBox Remember = new JCheckBox("Remember password?");
-        Remember.setBounds(190, 170, 164, 23);
-        Remember.setBackground(new Color(160,255, 200));
-
         
-        frame.add(Remember);
+        jpSenha = new JPasswordField();
+        jpSenha.setBounds(200, 150, 119, 20);
+        frame.add(jpSenha);
+        
+        
+        exibirSenha = new JCheckBox("Show Password?");
+        exibirSenha.setBounds(190, 170, 164, 23);
+        exibirSenha.setBackground(new Color(160,255, 200));
+        
+        frame.add(exibirSenha);
         
         frame.setVisible(true);
 
@@ -97,7 +98,21 @@ public class SystemLogin {
         });
         btnCadastro.setBounds(250, 230, 90, 23);
         frame.add(btnCadastro);
+        exibirSenha.addActionListener(new ActionListener() {
 
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                
+                if(exibirSenha.isSelected()){
+                    jpSenha.setEchoChar((char)0);
+                }
+                else{
+                    jpSenha.setEchoChar('*');
+
+                }
+            }
+
+        });
 
         javax.swing.GroupLayout layout = new GroupLayout(frame.getContentPane());
         frame.getContentPane().setLayout(layout);
@@ -118,7 +133,7 @@ public class SystemLogin {
         try {
             LoginDao loginDao = new LoginDao();
 
-            ResultSet rs = loginDao.auntenticacaoDoLogin(String.valueOf(jtUsuario.getText()), String.valueOf(jtSenha.getPassword()));
+            ResultSet rs = loginDao.auntenticacaoDoLogin(String.valueOf(jtUsuario.getText()), String.valueOf(jpSenha.getPassword()));
 
             if (rs.next()){
                 frame.dispose();
