@@ -6,6 +6,11 @@ import com.example.BD.TableDao.UsuarioDao;
 import com.example.Entidades.Endereco;
 import com.example.Entidades.Login;
 import com.example.Entidades.Usuario;
+import com.example.System.JTextField.JPasswordLimit;
+import com.example.System.JTextField.JTextFieldCharacters;
+import com.example.System.JTextField.JTextFieldLetters;
+import com.example.System.JTextField.JTextFieldNumber;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -25,7 +30,7 @@ public class SystemUsuario {
     private JTextField JTcep;
     private JTextField JTnumero;
     private JTextField JTusuario;
-    private JTextField JTsenha;
+    private JPasswordField JTsenha;
     private JButton JBcadastro;
     private JButton JBlogin;
     private JButton JBproximo;
@@ -83,11 +88,6 @@ public class SystemUsuario {
             JLcidade.setBounds(10,110,100,25);
             frame.add(JLcidade);
 
-            JTnumero = new JTextField(20);
-            JTnumero.setBounds(100,260,165,25);
-
-            frame.add(JTnumero);
-
             JLuf = new JLabel("UF:");
             JLuf.setBounds(10,140,80,25);
             frame.add(JLuf);
@@ -104,45 +104,49 @@ public class SystemUsuario {
             JLnumero.setBounds(10,260,80,25);
             frame.add(JLnumero);
 
-            JTnome = new JTextField();
+            JTnome = new JTextFieldLetters(40);
             JTnome.setBounds(100,20,165,25);
             frame.add(JTnome);
 
-            JTemail = new JTextField(20);
+            JTemail = new JTextFieldCharacters(30);
             JTemail.setBounds(100,50,165,25);
             frame.add(JTemail);
 
-            dia = new JTextField(20);
+            dia = new JTextFieldNumber(2);
             dia.setBounds(100,80,40,25);
             frame.add(dia);
 
-            mes = new JTextField(20);
+            mes = new JTextFieldNumber(2);
             mes.setBounds(143,80,40,25);
             frame.add(mes);
 
-            ano = new JTextField(20);
+            ano = new JTextFieldNumber(4);
             ano.setBounds(185,80,80,25);
             frame.add(ano);
 
-            JTcidade = new JTextField(20);
+            JTcidade = new JTextFieldLetters(30);
             JTcidade.setBounds(100,110,165,25);
             frame.add(JTcidade);
 
-            JTuf = new JTextField(20);
+            JTuf = new JTextFieldLetters(2);;
             JTuf.setBounds(100,140,165,25);
             frame.add(JTuf);
 
-            JTbairro = new JTextField(20);
+            JTbairro = new JTextFieldLetters(30);
             JTbairro.setBounds(100,170,165,25);
             frame.add(JTbairro);
 
-            JTlogradouro = new JTextField(20);
+            JTlogradouro = new JTextFieldLetters(30);
             JTlogradouro.setBounds(100,200,165,25);
             frame.add(JTlogradouro);
 
             JTcep = new JTextField(20);
             JTcep.setBounds(100,230,165,25);
             frame.add(JTcep);
+
+            JTnumero = new JTextFieldNumber(10);
+            JTnumero.setBounds(100,260,165,25);
+            frame.add(JTnumero);
 
             JBproximo = new JButton("PRÓXIMO");
             JBproximo.setBounds(330,140,110,25);
@@ -179,11 +183,11 @@ public class SystemUsuario {
         JLsenha.setBounds(175,125,130,25);
         frame2.add(this.JLsenha);
 
-        JTusuario = new JTextField();
+        JTusuario = new JTextFieldCharacters(8);
         JTusuario.setBounds(175,100,130,25);
         frame2.add(this.JTusuario);
 
-        JTsenha = new JTextField();
+        JTsenha = new JPasswordLimit(6);
         JTsenha.setBounds(175,150,130,25);
         frame2.add(this.JTsenha);
 
@@ -261,7 +265,7 @@ public class SystemUsuario {
                     String.valueOf(JTemail.getText()), sqldate);
                     usuarioDao.Salvar(usuario);
 
-                    Login login = new Login(String.valueOf(JTusuario.getText()),String.valueOf(JTsenha.getText()));
+                    Login login = new Login(String.valueOf(JTusuario.getText()),String.valueOf(JTsenha.getPassword()));
 
                     loginDao.criarLogin(usuario, login, login);
 

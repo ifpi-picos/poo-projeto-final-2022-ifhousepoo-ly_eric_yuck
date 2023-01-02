@@ -1,13 +1,12 @@
 package com.example.System.JTextField;
+
+import javax.swing.JPasswordField;
 import java.awt.event.KeyEvent;
 
-import javax.swing.JTextField;
+public class JPasswordLimit extends JPasswordField {
+    private int maxCaracteres= -1;
 
-public class JTtextFieldCaracteres extends JTextField {
-    
-private int maxCaracteres= -1;
-
-public JTtextFieldCaracteres() {
+public JPasswordLimit() {
         super();
         addKeyListener(new java.awt.event.KeyAdapter() {
             @Override
@@ -15,7 +14,7 @@ public JTtextFieldCaracteres() {
         jTextFieldKeyTyped(evt);}});
     }
 
-public JTtextFieldCaracteres(int limite) {
+public JPasswordLimit(int limite) {
     super();
     setMaximoCaracteres(limite);
 
@@ -27,16 +26,15 @@ public JTtextFieldCaracteres(int limite) {
 
         private void jTextFieldKeyTyped(KeyEvent evt) {
 
-String caracteres="0987654321";
-if(caracteres.contains(evt.getKeyChar()+"")){
+String caracteres="0987654321abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+if(!caracteres.contains(evt.getKeyChar()+"")){
 evt.consume();
 }
-if((getText().length()>=getMaximoCaracteres())&&(getMaximoCaracteres()!=-1)){
-
+if((String.valueOf(getPassword()).length()
+>=getMaximoCaracteres())&&(getMaximoCaracteres()!= -1)){
 evt.consume();
-setText(getText().substring(0,getMaximoCaracteres()));
+setText(String.valueOf(getPassword()).substring(0,getMaximoCaracteres()));
 }
-
         }
 
     public int getMaximoCaracteres() {

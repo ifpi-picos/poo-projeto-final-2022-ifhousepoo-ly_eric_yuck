@@ -1,6 +1,8 @@
 package com.example.System;
 
 import com.example.BD.TableDao.LoginDao;
+import com.example.System.JTextField.JPasswordLimit;
+import com.example.System.JTextField.JTextFieldCharacters;
 
 import javax.swing.*;
 import java.awt.*;
@@ -52,12 +54,12 @@ public class SystemLogin {
         lblLogin.setBounds(200, 50, 68, 40);
         frame.getContentPane().add(lblLogin);
 
-        jtUsuario = new JTextField();
+        jtUsuario = new JTextFieldCharacters(8);
         jtUsuario.setBounds(200, 120, 119, 20);
         frame.getContentPane().add(jtUsuario);
         jtUsuario.setColumns(10);
         
-        jpSenha = new JPasswordField();
+        jpSenha = new JPasswordLimit(6);
         jpSenha.setBounds(200, 150, 119, 20);
         frame.add(jpSenha);
         
