@@ -19,8 +19,8 @@ public class SystemMenu{
     private JMenu jMenu3;
     private JMenu jMenu4;
     private JMenuBar jMenuBar1;
-    private JMenuItem jMenuitem1;
-    private JMenuItem jMenuitem2;
+    private JMenuItem jMenuitemSair;
+    private JMenuItem jMenuitemDados;
     private JMenuItem jMenuitem3;
     private JMenuItem jMenuitem4;
     private JMenuItem jMenuitem5;
@@ -29,19 +29,19 @@ public class SystemMenu{
     private JMenuItem jMenuitem8;
     private JMenuItem jMenuitem9;
     
-    public SystemMenu(){
+    JFrame menuPrincipal =  new JFrame();
 
-        JFrame menuPrincipal =  new JFrame();
+    public SystemMenu(){
     
         jDesktopPane1 = new JDesktopPane();
-                jDesktopPane1.setBackground(new Color(160,255, 200));
+        jDesktopPane1.setBackground(new Color(160,255, 200));
 
         jMenuBar1 = new JMenuBar();
         jMenu1 = new JMenu();
-        jMenuitem1 = new JMenuItem();
+        jMenuitemSair = new JMenuItem();
 
         jMenu2 = new JMenu();
-        jMenuitem2 = new JMenuItem();
+        jMenuitemDados = new JMenuItem();
         jMenuitem3 = new JMenuItem();
         jMenuitem4 = new JMenuItem();
         jMenuitem5 = new JMenuItem();
@@ -69,19 +69,19 @@ public class SystemMenu{
         );
 
         jMenu1.setText("Log out");
-        jMenuitem1.setText("Sair");
-        jMenu1.add(jMenuitem1);
+        jMenuitemSair.setText("Sair");
+        jMenu1.add(jMenuitemSair);
         
         jMenuBar1.add(jMenu1);
 
         jMenu2.setText("Perfil");
-        jMenuitem2.setText("Dados Pessoais");
-        jMenuitem2.addActionListener(new ActionListener() {
+        jMenuitemDados.setText("Dados Pessoais");
+        jMenuitemDados.addActionListener(new ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem2ActionPerformed(evt);
             }
         });
-        jMenu2.add(jMenuitem2);
+        jMenu2.add(jMenuitemDados);
 
         jMenuitem3.setText("Endereço");
         jMenu2.add(jMenuitem3);
@@ -89,14 +89,14 @@ public class SystemMenu{
         jMenuitem4.setText("Meus Imoveis");
         jMenu2.add(jMenuitem4);
 
-        jMenuitem5.setText("Mudar Senha");
+        jMenuitem5.setText("Meus aluguéis");
         jMenu2.add(jMenuitem5);
         
         jMenuBar1.add(jMenu2);
         
         jMenu3.setText("Imoveis");
 
-        jMenuitem6.setText("Cadastra");
+        jMenuitem6.setText("Cadastrar");
         jMenu3.add(jMenuitem6);
         
         jMenuitem7.setText("Alterar");
@@ -110,7 +110,7 @@ public class SystemMenu{
 
         jMenuBar1.add(jMenu3);
         
-        jMenu4.setText("Sobre");
+        jMenu4.setText("Definições");
         
         jMenuBar1.add(jMenu4);
 
@@ -133,5 +133,15 @@ public class SystemMenu{
     }
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {
 
+    }
+
+    public JFrame getMenuPrincipal() {
+        return menuPrincipal;
+    }
+    public JMenuItem getjMenuitemSair() {
+        return jMenuitemSair;
+    }
+    public JMenuItem getjMenuitemDados() {
+        return jMenuitemDados;
     }
 }

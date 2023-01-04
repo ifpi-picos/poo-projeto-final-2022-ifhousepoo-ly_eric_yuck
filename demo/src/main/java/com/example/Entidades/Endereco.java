@@ -1,5 +1,10 @@
 package com.example.Entidades;
 
+import java.sql.SQLException;
+import java.util.List;
+
+import com.example.BD.TableDao.EnderecoDao;
+
 public class Endereco {
     private String estado;
     private String cidade;
@@ -16,6 +21,18 @@ public class Endereco {
         this.numero = numero;
         this.cep = cep;
     }
+
+    EnderecoDao enderecodao = new EnderecoDao();
+
+    public void status(int id) throws SQLException{
+        
+     List <Endereco> enderecos = enderecodao.ListarEnd(id);
+     for(Endereco endereco: enderecos){
+    System.out.println(endereco);
+    
+    }
+    }
+
     public String getEstado() {
         return estado;
     }

@@ -73,7 +73,7 @@ public class EnderecoDao implements IEndereco {
     @Override
     public List<Endereco> Listar() throws SQLException {
         Connection connection = Conexao.connection();
-        String sql = "SELECT * FROM enfereco";
+        String sql = "SELECT * FROM endereco";
         PreparedStatement pstm = connection.prepareStatement(sql);
         ResultSet  rs = pstm.executeQuery();
 
@@ -92,5 +92,29 @@ public class EnderecoDao implements IEndereco {
         }
 return enderecos;
     }
+
+    public List<Endereco> ListarEnd(int id) throws SQLException {
+        Connection connection = Conexao.connection();
+        String sql = "SELECT * FROM endereco WHERE id = ?";
+        PreparedStatement pstm = connection.prepareStatement(sql);
+        pstm.setInt(1, id);
+        ResultSet  rs = pstm.executeQuery();
+
+        List<Endereco> enderecos  = new ArrayList<>();
+
+        while(rs.next()){
+     String estado = rs.getString("estado");
+     String cidade = rs.getString("cidade");
+     String bairro = rs.getString("bairro");
+     String logradouro = rs.getString("logradouro");
+     int numero = rs.getInt("numero");
+     String cep = rs.getString("cep");
+     Endereco endereco = new Endereco(estado, cidade, bairro, logradouro, numero,cep);
+     enderecos.add(endereco);
+
+        }
+return enderecos;
+    }
+
     
 }

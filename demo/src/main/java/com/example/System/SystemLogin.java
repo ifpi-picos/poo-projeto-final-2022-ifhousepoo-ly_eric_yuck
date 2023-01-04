@@ -1,6 +1,7 @@
 package com.example.System;
 
 import com.example.BD.TableDao.LoginDao;
+import com.example.Entidades.Usuario;
 
 import javax.swing.*;
 import java.awt.*;
@@ -22,6 +23,9 @@ public class SystemLogin {
    private JButton btnCadastro;
    private JDesktopPane jDesktopPane1;
    private JCheckBox exibirSenha;
+   
+   Usuario usuario = new Usuario();
+
     public SystemLogin() {
         jDesktopPane1 = new JDesktopPane();
         jDesktopPane1.setBackground(new Color(160,255, 200));
@@ -134,10 +138,33 @@ public class SystemLogin {
             LoginDao loginDao = new LoginDao();
 
             ResultSet rs = loginDao.auntenticacaoDoLogin(String.valueOf(jtUsuario.getText()), String.valueOf(jpSenha.getPassword()));
-
+            
             if (rs.next()){
                 frame.dispose();
-                new SystemMenu();
+                SystemMenu sm = new SystemMenu();
+                //Sair do programa
+                sm.getjMenuitemSair().addActionListener(new ActionListener() {
+
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        sm.getMenuPrincipal().dispose();
+                    }
+        
+                });
+                //Exibir dados
+                sm.getjMenuitemDados().addActionListener(new ActionListener() {
+
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        try {
+                            usuario.statusU(rs.getInt("id_usuario"));
+                        } catch (SQLException ex) {
+                            ex.printStackTrace();
+                        }
+                        
+                    }
+        
+                });
                 
         }else
             JOptionPane.showMessageDialog(null, "usuário ou senha incorreto!!");

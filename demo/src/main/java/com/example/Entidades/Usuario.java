@@ -2,6 +2,9 @@ package com.example.Entidades;
 
 import java.util.Date;
 import java.util.List;
+
+import javax.swing.JOptionPane;
+
 import java.sql.SQLException;
 import com.example.BD.TableDao.UsuarioDao;
 public class Usuario {
@@ -76,14 +79,18 @@ public class Usuario {
     
     
     public String toString() {
-        return "Usuario [id=" + id + ", nome=" + nome + ", email=" + email + ", dataDeNasc=" + dataDeNasc
-                + ", enderecoU=" + enderecoU;
+        
+        return "NOME: " + nome + " \nEMAIL: " + email + "\nDATA DE NASCIMENTO: " + dataDeNasc;
+
+    
     }
+
     public void statusU(int usuario1) throws SQLException{
         
         List <Usuario> usuarios = usariodao.ListarUsuario(usuario1);
         for(Usuario usuario: usuarios){
-       System.out.println(usuario);
+       
+        JOptionPane.showMessageDialog(null, usuario);
     
 }
     }

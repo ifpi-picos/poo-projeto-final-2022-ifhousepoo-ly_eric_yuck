@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.example.BD.Interface.IUsuario;
-import com.example.Entidades.Endereco;
 import com.example.Entidades.Usuario;
 import com.example.conexaoBD.Conexao;
 
