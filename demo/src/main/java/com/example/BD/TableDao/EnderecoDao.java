@@ -95,7 +95,7 @@ return enderecos;
 
     public List<Endereco> ListarEnd(int id) throws SQLException {
         Connection connection = Conexao.connection();
-        String sql = "SELECT * FROM endereco WHERE id = ?";
+        String sql = "SELECT * FROM endereco WHERE idUsuario = ?";
         PreparedStatement pstm = connection.prepareStatement(sql);
         pstm.setInt(1, id);
         ResultSet  rs = pstm.executeQuery();

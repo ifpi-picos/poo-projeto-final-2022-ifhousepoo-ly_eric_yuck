@@ -1,6 +1,7 @@
 package com.example.System;
 
 import com.example.BD.TableDao.LoginDao;
+import com.example.Entidades.Endereco;
 import com.example.Entidades.Usuario;
 import com.example.System.JTextField.JPasswordLimit;
 import com.example.System.JTextField.JTextFieldCharacters;
@@ -27,6 +28,7 @@ public class SystemLogin {
    private JCheckBox exibirSenha;
    
    Usuario usuario = new Usuario();
+   Endereco endereco = new Endereco();
 
     public SystemLogin() {
         jDesktopPane1 = new JDesktopPane();
@@ -165,7 +167,21 @@ public class SystemLogin {
                         }
                         
                     }
-        
+
+                });
+                //Exibir endereço
+                sm.getjMenuitemEndereco().addActionListener(new ActionListener() {
+
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        try {
+                            endereco.statusU(rs.getInt("id_usuario"));
+                        } catch (SQLException ex) {
+                            ex.printStackTrace();
+                        }
+                        
+                    }
+
                 });
                 
         }else

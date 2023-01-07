@@ -2,8 +2,9 @@ package com.example.Entidades;
 
 import java.util.Date;
 import java.util.List;
-
+import java.awt.*;
 import javax.swing.JOptionPane;
+import javax.swing.UIManager;
 
 import java.sql.SQLException;
 import com.example.BD.TableDao.UsuarioDao;
@@ -14,7 +15,7 @@ public class Usuario {
     private String email;
     private Date dataDeNasc;
     private Endereco enderecoU;
-
+    
 
     public Usuario() {
     }
@@ -90,8 +91,11 @@ public class Usuario {
         List <Usuario> usuarios = usariodao.ListarUsuario(usuario1);
         for(Usuario usuario: usuarios){
        
-        JOptionPane.showMessageDialog(null, usuario);
-    
+        UIManager.put("OptionPane.minimumSize", new Dimension(200, 200));
+                    UIManager.getDefaults().put("OptionPane.background",new Color(160,255, 200));
+                   UIManager.put ("Panel.background", new Color(160,255, 200));
+            
+               JOptionPane.showMessageDialog(null,usuario);
 }
     }
 }
