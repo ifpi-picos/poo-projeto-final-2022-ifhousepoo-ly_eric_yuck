@@ -22,7 +22,7 @@ public class SystemMenu{
     private JMenuItem jMenuitemSair;
     private JMenuItem jMenuitemDados;
     private JMenuItem jMenuitemEndereco;
-    private JMenuItem jMenuitem4;
+    private JMenuItem jMenuitemImoveis;
     private JMenuItem jMenuitem5;
     private JMenuItem jMenuitem6;
     private JMenuItem jMenuitem7;
@@ -43,7 +43,7 @@ public class SystemMenu{
         jMenu2 = new JMenu();
         jMenuitemDados = new JMenuItem();
         jMenuitemEndereco = new JMenuItem();
-        jMenuitem4 = new JMenuItem();
+        jMenuitemImoveis = new JMenuItem();
         jMenuitem5 = new JMenuItem();
 
         jMenu3 = new JMenu();
@@ -86,8 +86,8 @@ public class SystemMenu{
         jMenuitemEndereco.setText("Endereço");
         jMenu2.add(jMenuitemEndereco);
         
-        jMenuitem4.setText("Meus Imoveis");
-        jMenu2.add(jMenuitem4);
+        jMenuitemImoveis.setText("Meus Imoveis");
+        jMenu2.add(jMenuitemImoveis);
 
         jMenuitem5.setText("Meus aluguéis");
         jMenu2.add(jMenuitem5);
@@ -146,5 +146,8 @@ public class SystemMenu{
     }
     public JMenuItem getjMenuitemEndereco() {
         return jMenuitemEndereco;
+    }
+    public JMenuItem getjMenuitemImoveis() {
+        return jMenuitemImoveis;
     }
 }

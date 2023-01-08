@@ -2,6 +2,7 @@ package com.example.System;
 
 import com.example.BD.TableDao.LoginDao;
 import com.example.Entidades.Endereco;
+import com.example.Entidades.Imovel;
 import com.example.Entidades.Usuario;
 import com.example.System.JTextField.JPasswordLimit;
 import com.example.System.JTextField.JTextFieldCharacters;
@@ -29,6 +30,7 @@ public class SystemLogin {
    
    Usuario usuario = new Usuario();
    Endereco endereco = new Endereco();
+   Imovel imovel = new Imovel();
 
     public SystemLogin() {
         jDesktopPane1 = new JDesktopPane();
@@ -176,6 +178,20 @@ public class SystemLogin {
                     public void actionPerformed(ActionEvent e) {
                         try {
                             endereco.statusU(rs.getInt("id_usuario"));
+                        } catch (SQLException ex) {
+                            ex.printStackTrace();
+                        }
+                        
+                    }
+
+                });
+                //Exibir imoveis
+                sm.getjMenuitemImoveis().addActionListener(new ActionListener() {
+
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        try {
+                            imovel.statusU(rs.getInt("id_usuario"));
                         } catch (SQLException ex) {
                             ex.printStackTrace();
                         }

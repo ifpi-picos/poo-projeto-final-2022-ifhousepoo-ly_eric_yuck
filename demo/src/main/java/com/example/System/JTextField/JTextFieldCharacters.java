@@ -27,7 +27,7 @@ public JTextFieldCharacters(int limite) {
 
         private void jTextFieldKeyTyped(KeyEvent evt) {
 
-String caracteres="0987654321 ";
+String caracteres="`^~-+-*/.,;:=)([]{}¨|%¢³ºª§²¹'!?°ª&";
 if(caracteres.contains(evt.getKeyChar()+"")){
 evt.consume();
 }

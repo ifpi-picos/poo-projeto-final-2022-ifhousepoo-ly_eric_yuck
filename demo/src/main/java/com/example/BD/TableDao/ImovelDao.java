@@ -78,7 +78,7 @@ return Imovel;
     @Override
     public List<Imovel> Listar() throws SQLException  {
             Connection connection = Conexao.connection();
-            String sql = "SELECT* FROM imoveis";
+            String sql = "SELECT * FROM imoveis";
 
             PreparedStatement pstm = connection.prepareStatement(sql);
 
@@ -100,4 +100,31 @@ return Imovel;
             return imoveis;
  
     }
+
+    public List<Imovel> ListarImo(int id) throws SQLException  {
+        Connection connection = Conexao.connection();
+        String sql = "SELECT * FROM imoveis WHERE id_usuario = ?";
+
+        PreparedStatement pstm = connection.prepareStatement(sql);
+
+        pstm.setInt(1, id);
+
+        ResultSet rs = pstm.executeQuery();
+
+        List <Imovel> imoveis = new ArrayList<>();
+
+        while(rs.next()){
+     int codigo = rs.getInt("código");
+    String descricao = rs.getString("descrição");
+   double valorDoAluguel = rs.getDouble("valorDoAluguel");
+   Date dataDeCadastro = rs.getDate("data_De_Cadastro");
+   int id_usuario = rs.getInt("id_usuario");
+
+   Imovel imovel = new Imovel(codigo, descricao, valorDoAluguel, dataDeCadastro,id_usuario);
+   imoveis.add(imovel);
+                  
+}
+        return imoveis;
+
+}
 }
