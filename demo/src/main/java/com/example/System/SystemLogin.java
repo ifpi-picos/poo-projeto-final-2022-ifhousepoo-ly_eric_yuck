@@ -18,11 +18,11 @@ public class SystemLogin {
 
    private JPasswordField jpSenha;
    private JTextField jtUsuario;
-   private JFrame  frame;
-   private JLabel  jlUsuario;
-   private JLabel  jlSenha;
-   private JLabel  lblImobiliaria;
-   private JLabel  lblLogin;
+   private JFrame frame;
+   private JLabel jlUsuario;
+   private JLabel jlSenha;
+   private JLabel lblImobiliaria;
+   private JLabel lblLogin;
    private JButton btnLogin;
    private JButton btnCadastro;
    private JDesktopPane jDesktopPane1;
@@ -30,7 +30,6 @@ public class SystemLogin {
    
    Usuario usuario = new Usuario();
    Endereco endereco = new Endereco();
-   Imovel imovel = new Imovel();
 
     public SystemLogin() {
         jDesktopPane1 = new JDesktopPane();
@@ -146,6 +145,8 @@ public class SystemLogin {
             ResultSet rs = loginDao.auntenticacaoDoLogin(String.valueOf(jtUsuario.getText()), String.valueOf(jpSenha.getPassword()));
             
             if (rs.next()){
+                Imovel imovel = new Imovel();
+
                 frame.dispose();
                 SystemMenu sm = new SystemMenu();
                 //Sair do programa
@@ -191,12 +192,32 @@ public class SystemLogin {
                     @Override
                     public void actionPerformed(ActionEvent e) {
                         try {
+                            sm.menuPrincipal.dispose();
                             imovel.statusU(rs.getInt("id_usuario"));
+                           
+                            //voltar para  menu principal
+                             imovel.getJBvoltar().addActionListener(new ActionListener() {
+
+                                @Override
+                                public void actionPerformed(ActionEvent e) {
+                                    try {
+                                        imovel.getFrame().dispose();
+
+                                        login();
+
+                                    } catch (Exception ex) {
+                                        ex.printStackTrace();
+                                    }
+                                    
+                                }
+                                
+                            });
                         } catch (SQLException ex) {
                             ex.printStackTrace();
                         }
                         
                     }
+                    
 
                 });
                 
