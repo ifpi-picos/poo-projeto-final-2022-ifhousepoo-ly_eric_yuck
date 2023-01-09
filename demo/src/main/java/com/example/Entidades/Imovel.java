@@ -37,9 +37,7 @@ public class Imovel {
     public String getDescricao() {
         return descricao;
     }
-    public double getValorDoAlugue() {
-        return valorDoAluguel;
-    }
+    
     
     public Date getDataDeCadastro() {
         return dataDeCadastro;
@@ -93,18 +91,13 @@ public String toString() {
 public void statusU(int usuario1) throws SQLException{
         
     List <Imovel> imoveis = imoveldao.ListarImo(usuario1);
-    JLabel JLtitulo = new JLabel("IMOVEIS");
-
-    JLtitulo.setBounds(200,50,265,26);
-    JLtitulo.setFont(new Font("Segoe UI Symbol", Font.BOLD, 25));
     DefaultComboBoxModel <Imovel> model = new DefaultComboBoxModel<Imovel>();
     model.addAll(imoveis);
 
     frame = new JFrame("imoveis");
-    frame.add(JLtitulo);
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     frame.setLocationRelativeTo(null);
-    frame.setSize(500, 350);
+    frame.setSize(500, 250);
 
     JPanel panel = new JPanel();
     panel.setSize(50, 150);
@@ -113,7 +106,7 @@ public void statusU(int usuario1) throws SQLException{
     JList <Imovel>jlist = new JList<Imovel>(model);
 
     JScrollPane scrollPane = new JScrollPane(jlist);
-    frame.add(scrollPane, BorderLayout.SOUTH);
+    panel.add(scrollPane, BorderLayout.SOUTH);
 
     JBvoltar = new JButton("VOLTAR");
     JBvoltar.setBounds(50,200,100,200);

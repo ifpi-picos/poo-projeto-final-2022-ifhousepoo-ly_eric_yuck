@@ -82,7 +82,6 @@ public class Usuario {
     public String toString() {
         
         return "NOME: " + nome + " \nEMAIL: " + email + "\nDATA DE NASCIMENTO: " + dataDeNasc;
-
     
     }
 

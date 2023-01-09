@@ -6,6 +6,11 @@ import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
+import com.example.System.JTextField.JPasswordLimit;
+import com.example.System.JTextField.JTextFieldCharacters;
+import com.example.System.JTextField.JTextFieldLetters;
+import com.example.System.JTextField.JTextFieldNumber;
+
 public class SystemAlterar {
     private JFrame jFtela;
     private JLabel jLnome;
@@ -81,23 +86,23 @@ public class SystemAlterar {
         jLdata.setBounds(225, 145, 265, 26);
         jFtela.add(jLdata);
 
-        jTnome = new JTextField();
+        jTnome = new JTextFieldLetters(40);
         jTnome.setBounds(30, 105, 170, 20);
         jFtela.add(jTnome);
         
-        jTemail = new JTextField();
+        jTemail = new JTextFieldCharacters(40);
         jTemail.setBounds(290, 105, 170, 20);
         jFtela.add(jTemail);
         
-        jTdia = new JTextField();
+        jTdia = new JTextFieldNumber(2);
         jTdia.setBounds(200, 170, 25, 25);
         jFtela.add(jTdia);
 
-        jTmes = new JTextField();
+        jTmes = new JTextFieldNumber(2);
         jTmes.setBounds(227, 170, 25, 25);
         jFtela.add(jTmes);
         
-        jTano = new JTextField();
+        jTano = new JTextFieldNumber(4);;
         jTano.setBounds(254, 170, 40, 25);
         jFtela.add(jTano);
 
@@ -169,19 +174,19 @@ public class SystemAlterar {
         jLnumero.setBounds(10, 215, 150, 20);
         jFtela2.add(jLnumero);
         
-        jTcidade = new JTextField();
+        jTcidade = new JTextFieldLetters(30);
         jTcidade.setBounds(70, 90, 240, 20);
         jFtela2.add(jTcidade);
         
-        jTestado = new JTextField();
+        jTestado = new JTextFieldLetters(2);
         jTestado.setBounds(70, 115, 30, 20);
         jFtela2.add(jTestado);
         
-        jTbairro = new JTextField();
+        jTbairro = new JTextFieldLetters(30);
         jTbairro.setBounds(70, 140, 240, 20);
         jFtela2.add(jTbairro);
         
-        jTlogradouro = new JTextField();
+        jTlogradouro = new JTextFieldLetters(30);
         jTlogradouro.setBounds(70, 165, 240, 20);
         jFtela2.add(jTlogradouro);
         
@@ -189,7 +194,7 @@ public class SystemAlterar {
         jTcep.setBounds(70, 190, 80, 20);
         jFtela2.add(jTcep);
         
-        jTnumero = new JTextField();
+        jTnumero = new JTextFieldNumber();
         jTnumero.setBounds(70, 215, 50, 20);
         jFtela2.add(jTnumero);
 
@@ -244,15 +249,15 @@ public class SystemAlterar {
         jLnovaSenha.setBounds(200, 182, 265, 26);
         jFtela3.add(jLnovaSenha);
         
-        jPsenha = new JPasswordField();
+        jPsenha = new JPasswordLimit(6);
         jPsenha.setBounds(200, 110, 100, 20);
         jFtela3.add(jPsenha);
         
-        jPconfirmarSenha = new JPasswordField();
+        jPconfirmarSenha = new JPasswordLimit(6);
         jPconfirmarSenha.setBounds(200, 160, 100, 20);
         jFtela3.add(jPconfirmarSenha);
         
-        jPnovaSenha = new JPasswordField();
+        jPnovaSenha = new JPasswordLimit(6);
         jPnovaSenha.setBounds(200, 205, 100, 20);
         jFtela3.add(jPnovaSenha);
 

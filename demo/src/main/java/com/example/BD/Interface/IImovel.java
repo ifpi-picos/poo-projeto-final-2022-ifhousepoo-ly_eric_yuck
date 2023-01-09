@@ -8,7 +8,7 @@ import java.util.List;
 public interface IImovel {
 
     public abstract Imovel SalvarImovel(Imovel  Imovel);
-    public abstract void  Remover(int Imovel);
+    public abstract void  Remover(int Imovel,int usuario);
     public abstract Imovel Alterar(Imovel imovel);
     public abstract List<Imovel> Listar() throws SQLException ;
     

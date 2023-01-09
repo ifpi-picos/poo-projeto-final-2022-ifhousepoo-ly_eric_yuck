@@ -7,14 +7,12 @@ import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import java.awt.*;
 
 import com.example.BD.TableDao.AluguelDao;
-
 
 public class Aluguel {
     private Date dataDeIn;
@@ -60,15 +58,6 @@ public class Aluguel {
 
     AluguelDao alugueldao = new AluguelDao();
 
-    public void status(int id) throws SQLException{
-        
-        List <Aluguel> alugueis = alugueldao.listar(id);
-        for(Aluguel aluguel: alugueis){
-       System.out.println(aluguel);
-       
-       }
-       }
-
        @Override
        public String toString() {
            return "ID do Imovel: " + getIdImovel() + "Data de inicio: " + getDataDeIn() + "Data de fim: " + getDataDeFim() + "Alugado: " + isAlugado();
@@ -77,18 +66,14 @@ public class Aluguel {
        public void statusU(int usuario1) throws SQLException{
         
         List <Aluguel> alugueis = alugueldao.listar(usuario1);
-        JLabel JLtitulo = new JLabel("ALUGUEIS");
-    
-        JLtitulo.setBounds(200,50,265,26);
-        JLtitulo.setFont(new Font("Segoe UI Symbol", Font.BOLD, 25));
+        
         DefaultComboBoxModel <Aluguel> model = new DefaultComboBoxModel<Aluguel>();
         model.addAll(alugueis);
     
         frame = new JFrame("alugueis");
-        frame.add(JLtitulo);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLocationRelativeTo(null);
-        frame.setSize(500, 350);
+        frame.setSize(500, 250);
     
         JPanel panel = new JPanel();
         panel.setSize(50, 150);
@@ -97,7 +82,7 @@ public class Aluguel {
         JList <Aluguel>jlist = new JList<Aluguel>(model);
     
         JScrollPane scrollPane = new JScrollPane(jlist);
-        frame.add(scrollPane, BorderLayout.SOUTH);
+        panel.add(scrollPane, BorderLayout.SOUTH);
     
         JBvoltar = new JButton("VOLTAR");
         JBvoltar.setBounds(50,200,100,200);
@@ -108,5 +93,5 @@ public class Aluguel {
     
         frame.setVisible(true);
     }
-    
+   
 }

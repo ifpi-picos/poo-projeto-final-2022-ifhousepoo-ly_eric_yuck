@@ -4,6 +4,10 @@ import java.awt.Color;
 import java.awt.Font;
 import javax.swing.*;
 
+import com.example.System.JTextField.JTextFieldCharacters;
+import com.example.System.JTextField.JTextFieldLetters;
+import com.example.System.JTextField.JTextFieldNumber;
+
 public class SystemImovel {
 private JFrame JFtela;
 private JLabel JLtitulo;
@@ -51,7 +55,7 @@ public void cadastrarImovel(){
     JLdata.setBounds(30,170,265,26);
     JFtela.add(JLdata);
     
-    JTdescricao = new JTextField();
+    JTdescricao = new JTextFieldLetters(50);
     JTdescricao.setBounds(30,105,250,20);
     JFtela.add(JTdescricao);
 
@@ -59,15 +63,15 @@ public void cadastrarImovel(){
     JTvalorAluguel.setBounds(30,153,80,20);
     JFtela.add(JTvalorAluguel);
 
-    JTdia = new JTextField();
+    JTdia = new JTextFieldNumber(2);
     JTdia.setBounds(30,195,25,25);
     JFtela.add(JTdia);
 
-    JTmes = new JTextField();
+    JTmes = new  JTextFieldNumber(2);
     JTmes.setBounds(56,195,25,25);
     JFtela.add(JTmes);
 
-    JTano = new JTextField();
+    JTano = new  JTextFieldNumber(4);
     JTano.setBounds(83,195,40,25);
     JFtela.add(JTano);
     
@@ -109,37 +113,46 @@ public void cadastrarImovel(){
         JLtitulo.setBounds(125,15,265,26);
         JLtitulo.setFont(new Font("Segoe UI Symbol", Font.BOLD, 25));
         JFtela.add(JLtitulo);
-    
+
+        JLcodigo = new JLabel("CÓDIGO DO IMOVEL");
+        JLcodigo.setBounds(30,80,265,26);
+        JLcodigo.setFont(new Font("Segoe UI Symbol", Font.BOLD, 15));
+        JFtela.add(JLcodigo);
+
         JLdescricao = new JLabel("DESCRIÇÃO");
-        JLdescricao.setBounds(30,80,265,26);
+        JLdescricao.setBounds(30,130,265,26);
         JFtela.add(JLdescricao);
     
         JLvalorAluguel = new JLabel("VALOR DO ALUGUEL");
-        JLvalorAluguel.setBounds(30,130,265,26);
+        JLvalorAluguel.setBounds(30,179,265,26);
         JFtela.add(JLvalorAluguel);
     
         JLdata = new JLabel("DATA");
-        JLdata.setBounds(30,170,265,26);
+        JLdata.setBounds(30,228,265,26);
         JFtela.add(JLdata);
+
+        JTcodigo = new JTextFieldNumber(20);
+        JTcodigo.setBounds(30,105,40,27);
+        JFtela.add(JTcodigo);
         
-        JTdescricao = new JTextField();
-        JTdescricao.setBounds(30,105,250,20);
+        JTdescricao = new JTextFieldLetters(50);
+        JTdescricao.setBounds(30,153,250,20);
         JFtela.add(JTdescricao);
     
         JTvalorAluguel = new JTextField();
-        JTvalorAluguel.setBounds(30,153,80,20);
+        JTvalorAluguel.setBounds(30,203,80,20);
         JFtela.add(JTvalorAluguel);
     
-        JTdia = new JTextField();
-        JTdia.setBounds(30,195,25,25);
+        JTdia = new  JTextFieldNumber(2);
+        JTdia.setBounds(30,253,25,25);
         JFtela.add(JTdia);
     
-        JTmes = new JTextField();
-        JTmes.setBounds(56,195,25,25);
+        JTmes = new  JTextFieldNumber(2);
+        JTmes.setBounds(56,253,25,25);
         JFtela.add(JTmes);
     
-        JTano = new JTextField();
-        JTano.setBounds(83,195,40,25);
+        JTano = new JTextFieldNumber(4);
+        JTano.setBounds(83,253,40,25);
         JFtela.add(JTano);
         
         JBalterar = new JButton("ALTERAR");
@@ -184,7 +197,7 @@ public void removerImovel(){
     JLcodigo.setFont(new Font("Segoe UI Symbol", Font.BOLD, 20));
     JFtela.add(JLcodigo);
 
-    JTcodigo = new JTextField();
+    JTcodigo = new JTextFieldNumber(20);
     JTcodigo.setBounds(135,150,40,27);
     JFtela.add(JTcodigo);
 
@@ -244,5 +257,14 @@ public JButton getJBalterar() {
     return JBalterar;
 }
 
-   
+public JTextField getJTcodigo() {
+    return JTcodigo;
+}
+
+
+public JButton getJBremover() {
+    return JBremover;
+}
+
+
 }

@@ -24,7 +24,7 @@ try{
 
         pstm.setString(1, Imovel.getDescricao());
         pstm.setDate(2, new java.sql.Date(Imovel.getDataDeCadastro().getTime()));
-        pstm.setDouble(3, Imovel.getValorDoAlugue());
+        pstm.setDouble(3, Imovel.getValorDoAluguel());
         pstm.setInt(4, Imovel.getIdUsuario());
 
         pstm.executeUpdate();
@@ -37,13 +37,15 @@ return Imovel;
     }
 
     @Override
-    public void Remover(int Imovel) {
+    public void Remover(int Imovel , int usuario) {
 
         try {
             Connection connection = Conexao.connection();
-            String aql = "DELETE FROM imoveis WHERE código = ?";
+            String aql = "DELETE FROM imoveis WHERE código = ? AND id_usuario = ?";
             PreparedStatement pstm = connection.prepareStatement(aql);
                 pstm.setInt(1, Imovel);
+                pstm.setInt(2, usuario);
+
             pstm.executeUpdate();
             
         } catch (Exception e) {
@@ -56,16 +58,16 @@ return Imovel;
     public Imovel Alterar(Imovel imovel) {
         try {
             Connection connection = Conexao.connection();
-            String sql = "UPDATE imoveis SET descrição = ?, data_De_Cadastro = ?,valorDoAluguel = ? WHERE id_usuario = ?";
+            String sql = "UPDATE imoveis SET descrição = ?, data_De_Cadastro = ?,valorDoAluguel = ? WHERE código = ? AND id_usuario = ?";
 
             PreparedStatement pstm = connection.prepareStatement(sql,PreparedStatement.RETURN_GENERATED_KEYS);
             pstm.setString(1, imovel.getDescricao());
 
             pstm.setDate(2, new java.sql.Date(imovel.getDataDeCadastro().getTime()));
-            pstm.setDouble(3, imovel.getValorDoAlugue());
-            pstm.setInt(4, imovel.getIdUsuario());
+            pstm.setDouble(3, imovel.getValorDoAluguel());
+            pstm.setInt(4, imovel.getCodigo());
+            pstm.setInt(5, imovel.getIdUsuario());
             pstm.executeUpdate();
-
 
         } catch (Exception e) {
             e.printStackTrace();
