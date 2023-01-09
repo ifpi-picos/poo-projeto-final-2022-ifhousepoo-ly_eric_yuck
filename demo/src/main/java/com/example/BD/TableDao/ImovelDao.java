@@ -19,14 +19,13 @@ public class ImovelDao  implements IImovel{
 try{
         Connection connection = Conexao.connection();
 
-        String sql = "INSERT INTO imoveis (código,descrição,data_De_Cadastro,valorDoAluguel,id_usuario) VALUES (?,?,?,?,?)";
+        String sql = "INSERT INTO imoveis (descrição,data_De_Cadastro,valorDoAluguel,id_usuario) VALUES (?,?,?,?)";
         PreparedStatement pstm =  connection.prepareStatement(sql,PreparedStatement.RETURN_GENERATED_KEYS);
 
-        pstm.setInt(1, Imovel.getCodigo());
-        pstm.setString(2, Imovel.getDescricao());
-        pstm.setDate(3, new java.sql.Date(Imovel.getDataDeCadastro().getTime()));
-        pstm.setDouble(4, Imovel.getValorDoAlugue());
-        pstm.setInt(5, Imovel.getIdUsuario());
+        pstm.setString(1, Imovel.getDescricao());
+        pstm.setDate(2, new java.sql.Date(Imovel.getDataDeCadastro().getTime()));
+        pstm.setDouble(3, Imovel.getValorDoAlugue());
+        pstm.setInt(4, Imovel.getIdUsuario());
 
         pstm.executeUpdate();
 }
@@ -57,15 +56,15 @@ return Imovel;
     public Imovel Alterar(Imovel imovel) {
         try {
             Connection connection = Conexao.connection();
-            String sql = "UPDATE imoveis SET descrição = ?, data_De_Cadastro = ?,valorDoAluguel = ? WHERE código = ?";
+            String sql = "UPDATE imoveis SET descrição = ?, data_De_Cadastro = ?,valorDoAluguel = ? WHERE id_usuario = ?";
 
             PreparedStatement pstm = connection.prepareStatement(sql,PreparedStatement.RETURN_GENERATED_KEYS);
-        pstm.setString(1, imovel.getDescricao());
+            pstm.setString(1, imovel.getDescricao());
 
-        pstm.setDate(2, new java.sql.Date(imovel.getDataDeCadastro().getTime()));
-        pstm.setDouble(3, imovel.getValorDoAlugue());
-        pstm.setInt(4, imovel.getCodigo());
-        pstm.executeUpdate();
+            pstm.setDate(2, new java.sql.Date(imovel.getDataDeCadastro().getTime()));
+            pstm.setDouble(3, imovel.getValorDoAlugue());
+            pstm.setInt(4, imovel.getIdUsuario());
+            pstm.executeUpdate();
 
 
         } catch (Exception e) {

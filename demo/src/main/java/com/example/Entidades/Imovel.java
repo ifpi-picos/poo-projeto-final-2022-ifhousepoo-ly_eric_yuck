@@ -15,11 +15,19 @@ public class Imovel {
     private int idUsuario;
     private JButton JBvoltar;
     private JFrame frame;
+    
     public Imovel(){}
 
 
     public Imovel(int codigo ,String descricao, double valorDoAluguel, Date dataDeCadastro,int idUsuario ) {
         this.codigo = codigo;
+        this.descricao = descricao;
+        this.valorDoAluguel = valorDoAluguel;
+        this.dataDeCadastro = dataDeCadastro;
+        this.idUsuario = idUsuario;
+    }
+
+    public Imovel(String descricao, double valorDoAluguel, Date dataDeCadastro,int idUsuario ) {
         this.descricao = descricao;
         this.valorDoAluguel = valorDoAluguel;
         this.dataDeCadastro = dataDeCadastro;

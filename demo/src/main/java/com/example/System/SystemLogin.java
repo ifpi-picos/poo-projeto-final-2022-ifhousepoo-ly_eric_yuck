@@ -1,6 +1,8 @@
 package com.example.System;
 
+import com.example.BD.TableDao.ImovelDao;
 import com.example.BD.TableDao.LoginDao;
+import com.example.Entidades.Aluguel;
 import com.example.Entidades.Endereco;
 import com.example.Entidades.Imovel;
 import com.example.Entidades.Usuario;
@@ -13,6 +15,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 
 public class SystemLogin {
 
@@ -30,6 +33,9 @@ public class SystemLogin {
    
    Usuario usuario = new Usuario();
    Endereco endereco = new Endereco();
+   Imovel imovel = new Imovel();
+   Aluguel aluguel = new Aluguel();
+   SystemImovel systemimovel = new SystemImovel();
 
     public SystemLogin() {
         jDesktopPane1 = new JDesktopPane();
@@ -145,7 +151,7 @@ public class SystemLogin {
             ResultSet rs = loginDao.auntenticacaoDoLogin(String.valueOf(jtUsuario.getText()), String.valueOf(jpSenha.getPassword()));
             
             if (rs.next()){
-                Imovel imovel = new Imovel();
+
 
                 frame.dispose();
                 SystemMenu sm = new SystemMenu();
@@ -195,7 +201,7 @@ public class SystemLogin {
                             sm.menuPrincipal.dispose();
                             imovel.statusU(rs.getInt("id_usuario"));
                            
-                            //voltar para  menu principal
+                            //voltar para menu principal
                              imovel.getJBvoltar().addActionListener(new ActionListener() {
 
                                 @Override
@@ -211,13 +217,153 @@ public class SystemLogin {
                                     
                                 }
                                 
-                            });
+                            }); 
                         } catch (SQLException ex) {
                             ex.printStackTrace();
                         }
                         
                     }
                     
+
+                });
+                //Exibir alugueis
+                sm.getjMenuitemAlugueis().addActionListener(new ActionListener() {
+
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        try {
+                            sm.menuPrincipal.dispose();
+                            aluguel.statusU(rs.getInt("id_usuario"));
+                           
+                            //voltar para menu principal
+                            aluguel.getJBvoltar().addActionListener(new ActionListener() {
+
+                                @Override
+                                public void actionPerformed(ActionEvent e) {
+                                    try {
+                                        aluguel.getFrame().dispose();
+
+                                        login();
+
+                                    } catch (Exception ex) {
+                                        ex.printStackTrace();
+                                    }
+                                    
+                                }
+                                
+                            }); 
+                        } catch (SQLException ex) {
+                            ex.printStackTrace();
+                        }
+                        
+                    }
+                    
+
+                });
+                //Cadastrar Imóvel
+                sm.getjMenuitemCadastro().addActionListener(new ActionListener() {
+
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        
+                        sm.menuPrincipal.dispose();
+                        systemimovel.cadastrarImovel();
+                        
+                        systemimovel.getJBcadastrar().addActionListener(new ActionListener() {
+
+                            @Override
+                            public void actionPerformed(ActionEvent e) {
+                                try {
+                                String day = systemimovel.getJTdia().getText();
+                                String month = systemimovel.getJTmes().getText();
+                                String year = systemimovel.getJTano().getText();
+                                LocalDate dat = LocalDate.of(Integer.parseInt(year), Integer.parseInt(month), Integer.parseInt(day));
+                                java.sql.Date sqldate = java.sql.Date.valueOf(dat);
+
+                                Imovel imovel = new Imovel(String.valueOf(systemimovel.getJTdescricao().getText()),Double.parseDouble(String.valueOf(systemimovel.getJTvalorAluguel().getText())),sqldate,rs.getInt("id_usuario"));
+
+                                ImovelDao imovelDao = new ImovelDao();
+                                imovelDao.SalvarImovel(imovel);
+
+                                } catch (Exception ex) {
+                                    ex.printStackTrace();
+                                }
+                                
+                            }                           
+                        });
+
+                            //voltar para menu principal
+                            systemimovel.getJBvoltar().addActionListener(new ActionListener() {
+
+                                @Override
+                                public void actionPerformed(ActionEvent e) {
+                                    try {
+                                        systemimovel.getJFtela().dispose();
+
+                                        login();
+
+                                    } catch (Exception ex) {
+                                        ex.printStackTrace();
+                                    }
+                                    
+                                }
+                                
+                            }); 
+                                               
+                    }                    
+
+                });
+                //Alterar imovel
+                sm.getjMenuitemAlterar().addActionListener(new ActionListener() {
+
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        
+                        sm.menuPrincipal.dispose();
+                        systemimovel.alterarImovel();
+                        
+                        systemimovel.getJBalterar().addActionListener(new ActionListener() {
+
+                            @Override
+                            public void actionPerformed(ActionEvent e) {
+                                try {
+                                String day = systemimovel.getJTdia().getText();
+                                String month = systemimovel.getJTmes().getText();
+                                String year = systemimovel.getJTano().getText();
+                                LocalDate dat = LocalDate.of(Integer.parseInt(year), Integer.parseInt(month), Integer.parseInt(day));
+                                java.sql.Date sqldate = java.sql.Date.valueOf(dat);
+
+                                Imovel imovel = new Imovel(String.valueOf(systemimovel.getJTdescricao().getText()),Double.parseDouble(String.valueOf(systemimovel.getJTvalorAluguel().getText())),sqldate,rs.getInt("id_usuario"));
+
+                                ImovelDao imovelDao = new ImovelDao();
+                                imovelDao.Alterar(imovel);
+
+                                } catch (Exception ex) {
+                                    ex.printStackTrace();
+                                }
+                                
+                            }                           
+                        });
+
+                            //voltar para menu principal
+                            systemimovel.getJBvoltar().addActionListener(new ActionListener() {
+
+                                @Override
+                                public void actionPerformed(ActionEvent e) {
+                                    try {
+                                        systemimovel.getJFtela().dispose();
+
+                                        login();
+
+                                    } catch (Exception ex) {
+                                        ex.printStackTrace();
+                                    }
+                                    
+                                }
+                                
+                            }); 
+                                               
+                    }                    
 
                 });
                 

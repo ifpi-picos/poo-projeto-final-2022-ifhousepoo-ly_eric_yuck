@@ -23,9 +23,9 @@ public class SystemMenu{
     private JMenuItem jMenuitemDados;
     private JMenuItem jMenuitemEndereco;
     private JMenuItem jMenuitemImoveis;
-    private JMenuItem jMenuitem5;
-    private JMenuItem jMenuitem6;
-    private JMenuItem jMenuitem7;
+    private JMenuItem jMenuitemAlugueis;
+    private JMenuItem jMenuitemCadastro;
+    private JMenuItem jMenuitemAlterar;
     private JMenuItem jMenuitem8;
     private JMenuItem jMenuitem9;
     
@@ -44,11 +44,11 @@ public class SystemMenu{
         jMenuitemDados = new JMenuItem();
         jMenuitemEndereco = new JMenuItem();
         jMenuitemImoveis = new JMenuItem();
-        jMenuitem5 = new JMenuItem();
+        jMenuitemAlugueis = new JMenuItem();
 
         jMenu3 = new JMenu();
-        jMenuitem6 = new JMenuItem();
-        jMenuitem7 = new JMenuItem();
+        jMenuitemCadastro = new JMenuItem();
+        jMenuitemAlterar = new JMenuItem();
         jMenuitem8 = new JMenuItem();
         jMenuitem9 = new JMenuItem();
 
@@ -89,18 +89,18 @@ public class SystemMenu{
         jMenuitemImoveis.setText("Meus Imoveis");
         jMenu2.add(jMenuitemImoveis);
 
-        jMenuitem5.setText("Meus aluguéis");
-        jMenu2.add(jMenuitem5);
+        jMenuitemAlugueis.setText("Meus aluguéis");
+        jMenu2.add(jMenuitemAlugueis);
         
         jMenuBar1.add(jMenu2);
         
         jMenu3.setText("Imoveis");
 
-        jMenuitem6.setText("Cadastrar");
-        jMenu3.add(jMenuitem6);
+        jMenuitemCadastro.setText("Cadastrar");
+        jMenu3.add(jMenuitemCadastro);
         
-        jMenuitem7.setText("Alterar");
-        jMenu3.add(jMenuitem7);
+        jMenuitemAlterar.setText("Alterar");
+        jMenu3.add(jMenuitemAlterar);
         
         jMenuitem8.setText("Alugar");
         jMenu3.add(jMenuitem8);
@@ -149,5 +149,14 @@ public class SystemMenu{
     }
     public JMenuItem getjMenuitemImoveis() {
         return jMenuitemImoveis;
+    }
+    public JMenuItem getjMenuitemAlugueis() {
+        return jMenuitemAlugueis;
+    }
+    public JMenuItem getjMenuitemCadastro() {
+        return jMenuitemCadastro;
+    }
+    public JMenuItem getjMenuitemAlterar() {
+        return jMenuitemAlterar;
     }
 }

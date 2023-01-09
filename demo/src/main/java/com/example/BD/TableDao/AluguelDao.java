@@ -16,10 +16,10 @@ import com.example.conexaoBD.Conexao;
 public class AluguelDao implements IAluguel {
 
     @Override
-    public Aluguel salvarAlugue(Aluguel aluguel) {
+    public Aluguel salvarAluguel(Aluguel aluguel) {
         try {
             Connection connection = Conexao.connection();
-            String sql = "INSERT INTO aluguel (dataDeIn , dataDeFim , idImovel , alugado) VALUES (?,?,?,?)";
+            String sql = "INSERT INTO aluguel (data_De_inicio , data_De_Fim , codigo_imovel , Alugado) VALUES (?,?,?,?)";
             PreparedStatement pstm = connection.prepareStatement(sql,PreparedStatement.RETURN_GENERATED_KEYS);
             pstm.setDate(1, new java.sql.Date(aluguel.getDataDeFim().getTime()));
             pstm.setDate(2, new java.sql.Date(aluguel.getDataDeFim().getTime()));
@@ -50,7 +50,7 @@ public class AluguelDao implements IAluguel {
     public Aluguel alterar(Aluguel aluguel) {
         try {
             Connection connection = Conexao.connection();
-            String sql = "UPDATE imoveis BOOLEAN dataDeIn = ?, dataDeFim = ?,idImovel = ?,alugado = ? WHERE código = ?";
+            String sql = "UPDATE imoveis BOOLEAN data_De_inicio = ?, data_De_Fim = ?,codigo_imovel = ?,Alugado = ? WHERE código = ?";
             
             PreparedStatement pstm = connection.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
             pstm.setDate(1, new java.sql.Date(aluguel.getDataDeFim().getTime()));
@@ -65,23 +65,23 @@ public class AluguelDao implements IAluguel {
         return aluguel;
     }
 
-    @Override
-    public List<Aluguel> listar() throws SQLException {
+    public List<Aluguel> listar(int idUsuario) throws SQLException {
         
         Connection connection = Conexao.connection();
-        String sql = "SELECT* FROM aluguel";
+        String sql = "SELECT * FROM alugueis WHERE id_usuario = ?";
         PreparedStatement pstm = connection.prepareStatement(sql);
+        pstm.setInt(1, idUsuario);
         ResultSet rs = pstm.executeQuery();
 
         List <Aluguel> alugueis = new ArrayList<>();
 
         while(rs.next()){
-            Date dataDeIn = rs.getDate("dataDeIn");
-            Date dataDeFim = rs.getDate("dataDeFim");
-            int idImovel  = rs.getInt("idImovel");
-            Boolean alugado  = rs.getBoolean("alugado");
+            Date data_De_inicio = rs.getDate("data_De_inicio");
+            Date data_De_Fim = rs.getDate("data_De_Fim");
+            int codigo_imovel  = rs.getInt("codigo_imovel");
+            Boolean Alugado  = rs.getBoolean("Alugado");
 
-            Aluguel aluguel = new Aluguel(dataDeIn, dataDeFim, idImovel, alugado);
+            Aluguel aluguel = new Aluguel(data_De_inicio, data_De_Fim, codigo_imovel, Alugado);
             alugueis.add(aluguel);
         }
         return alugueis;

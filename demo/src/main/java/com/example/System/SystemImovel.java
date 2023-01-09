@@ -19,6 +19,9 @@ private JDesktopPane jDesktopPane1;
 private JButton JBcadastrar;
 private JButton JBvoltar;
 private JButton JBalterar;
+private JLabel JLcodigo;
+private JTextField JTcodigo;
+private JButton JBremover;
 
 public void cadastrarImovel(){
     JFtela = new JFrame("CADASTRO");
@@ -160,7 +163,7 @@ public void cadastrarImovel(){
     
             );
     }
-public void reomverImovel(){
+public void removerImovel(){
     JFtela = new JFrame("CADASTRO");
     JFtela.setFont(new Font("Segoe UI Symbol", Font.BOLD, 25));
     JFtela.setSize(500, 350);
@@ -171,10 +174,27 @@ public void reomverImovel(){
     jDesktopPane1 = new JDesktopPane();
     jDesktopPane1.setBackground(new Color(160,255, 200));
 
-    JLtitulo = new JLabel("CADASTRAR IMOVEL");
-    JLtitulo.setBounds(125,15,265,26);
+    JLtitulo = new JLabel("REMOVER IMOVEL");
+    JLtitulo.setBounds(130,25,265,26);
     JLtitulo.setFont(new Font("Segoe UI Symbol", Font.BOLD, 25));
     JFtela.add(JLtitulo);
+
+    JLcodigo = new JLabel("CÓDIGO DO IMOVEL");
+    JLcodigo.setBounds(185,150,265,26);
+    JLcodigo.setFont(new Font("Segoe UI Symbol", Font.BOLD, 20));
+    JFtela.add(JLcodigo);
+
+    JTcodigo = new JTextField();
+    JTcodigo.setBounds(135,150,40,27);
+    JFtela.add(JTcodigo);
+
+    JBremover = new JButton("REMOVER");
+    JBremover.setBounds(130,215,100,25);
+    JFtela.add(JBremover);
+
+    JBvoltar = new JButton("VOLTAR");
+    JBvoltar.setBounds(290,215,100,25);
+    JFtela.add(JBvoltar);
 
     JFtela.setVisible(true);
 
@@ -223,5 +243,6 @@ public JButton getJBcadastrar() {
 public JButton getJBalterar() {
     return JBalterar;
 }
+
    
 }
