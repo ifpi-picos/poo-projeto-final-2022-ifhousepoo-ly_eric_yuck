@@ -8,9 +8,6 @@ public class Login {
     public Login() {
     }
 
-    public Login(int id_usuario){
-        this.id_usuario = id_usuario;
-    }
     
     public Login(String user, String senha) {
         this.user = user;

@@ -26,7 +26,7 @@ public class SystemMenu{
     private JMenuItem jMenuitemAlugueis;
     private JMenuItem jMenuitemCadastro;
     private JMenuItem jMenuitemAlterar;
-    private JMenuItem jMenuitem8;
+    private JMenuItem jMenuitemAlugar;
     private JMenuItem jMenuitemRemover;
     private JMenuItem jMenuitemAlterarDados;
     private JMenuItem jMenuitemAlterarEndereco;
@@ -54,7 +54,7 @@ public class SystemMenu{
         jMenu3 = new JMenu();
         jMenuitemCadastro = new JMenuItem();
         jMenuitemAlterar = new JMenuItem();
-        jMenuitem8 = new JMenuItem();
+        jMenuitemAlugar = new JMenuItem();
         jMenuitemRemover = new JMenuItem();
 
         jMenu4 = new JMenu();
@@ -111,8 +111,8 @@ public class SystemMenu{
         jMenuitemAlterar.setText("Alterar");
         jMenu3.add(jMenuitemAlterar);
         
-        jMenuitem8.setText("Alugar");
-        jMenu3.add(jMenuitem8);
+        jMenuitemAlugar.setText("Alugar");
+        jMenu3.add(jMenuitemAlugar);
         
         jMenuitemRemover.setText("Excluir");
         jMenu3.add(jMenuitemRemover);
@@ -195,5 +195,8 @@ public class SystemMenu{
     }
     public JMenuItem getjMenuitemExcluirConta() {
         return jMenuitemExcluirConta;
+    }
+    public JMenuItem getjMenuitemAlugar() {
+        return jMenuitemAlugar;
     }
 }

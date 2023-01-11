@@ -30,7 +30,7 @@ public JTextFieldCharacters(int limite) {
 
         private void jTextFieldKeyTyped(KeyEvent evt) {
 
-String caracteres="`^~-+-*/.,;:=)([]{}¨|%¢³ºª§²¹'!?°ª&";
+String caracteres="`^~-+-*/,;:=)([]{}¨|%¢³ºª§²¹'!?°ª&";
 if(caracteres.contains(evt.getKeyChar()+"")){
 evt.consume();
 }

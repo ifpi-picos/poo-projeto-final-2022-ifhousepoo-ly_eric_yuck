@@ -15,6 +15,7 @@ public class Endereco {
     private String logradouro;
     private int numero;
     private String cep;
+    private int idUsuario;
     
     public Endereco(){
 
@@ -27,6 +28,16 @@ public class Endereco {
         this.logradouro = logradouro;
         this.numero = numero;
         this.cep = cep;
+    }
+
+    public Endereco(String estado, String cidade, String bairro, String logradouro, int numero, String cep, int idUsuario) {
+        this.estado = estado;
+        this.cidade = cidade;
+        this.bairro = bairro;
+        this.logradouro = logradouro;
+        this.numero = numero;
+        this.cep = cep;
+        this.idUsuario = idUsuario;
     }
 
     EnderecoDao enderecodao = new EnderecoDao();
@@ -58,6 +69,10 @@ public class Endereco {
    
     public String getCep() {
         return cep;
+    }
+
+    public int getIdUsuario() {
+        return idUsuario;
     }
 
 

@@ -4,8 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
+
 
 import com.example.BD.Interface.Ilogin;
 import com.example.Entidades.Login;
@@ -61,41 +60,6 @@ public class LoginDao implements Ilogin {
       
       return login;
       }
-      public List<Login> pegarIdUsuario() throws SQLException {
-          ResultSet rs;
-          Connection connection = Conexao.connection();
-          String sql = "SELECT * FROM ids";
-          PreparedStatement pstm = connection.prepareStatement(sql);
-  
-            rs = pstm.executeQuery();
-  
-            List<Login> ids = new ArrayList<>();
-            while(rs.next()){
-              int id = rs.getInt("id");
-              Login login = new Login(id);
-  
-              ids.add(login);
-            }
-  
-          return ids;
-  
-          
-  }public Login atualizarID(Login id) {
-          
-    try {
-    Connection connection =  Conexao.connection();
-    String sql = "UPDATE ids SET id = ? WHERE codigo = ?";
-    PreparedStatement pstm = connection.prepareStatement(sql,PreparedStatement.RETURN_GENERATED_KEYS);
-    
-    pstm.setInt(1, id.getId_usuario());
-    pstm.setInt(2, 1);
-    pstm.executeUpdate();
-  
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-   return id;
-    
-  }
+
     
 }

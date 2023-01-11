@@ -53,13 +53,14 @@ public class EnderecoDao implements IEndereco {
     public Endereco Alterar(Endereco endereco) {
         try {
             Connection connection = Conexao.connection();
-            String sql = "UPDATE endereco SET estado = ? , cidade = ? , bairro  = ? , logradouro = ? WHHERE numero = ? ";
+            String sql = "UPDATE endereco SET estado = ? , cidade = ? , bairro  = ? , logradouro = ? , numero = ? WHERE id_usuario = ?";
             PreparedStatement pstm = connection.prepareStatement(sql,PreparedStatement.RETURN_GENERATED_KEYS);
             pstm.setString(1, endereco.getEstado());
             pstm.setString(2, endereco.getCidade());
             pstm.setString(3, endereco.getBairro());
             pstm.setString(4, endereco.getLogradouro());
             pstm.setInt(5, endereco.getNumero());
+            pstm.setInt(6, endereco.getIdUsuario());
             pstm.executeUpdate();
 
         } catch (Exception e) {
@@ -70,28 +71,6 @@ public class EnderecoDao implements IEndereco {
         return endereco;
     }
 
-    @Override
-    public List<Endereco> Listar() throws SQLException {
-        Connection connection = Conexao.connection();
-        String sql = "SELECT * FROM endereco";
-        PreparedStatement pstm = connection.prepareStatement(sql);
-        ResultSet  rs = pstm.executeQuery();
-
-        List<Endereco> enderecos  = new ArrayList<>();
-
-        while(rs.next()){
-     String estado = rs.getString("estado");
-     String cidade = rs.getString("cidade");
-     String bairro = rs.getString("bairro");
-     String logradouro = rs.getString("logradouro");
-     int numero = rs.getInt("numero");
-     String cep = rs.getString("cep");
-     Endereco endereco = new Endereco(estado, cidade, bairro, logradouro, numero,cep);
-     enderecos.add(endereco);
-
-        }
-return enderecos;
-    }
 
     public List<Endereco> ListarEnd(int id) throws SQLException {
         Connection connection = Conexao.connection();

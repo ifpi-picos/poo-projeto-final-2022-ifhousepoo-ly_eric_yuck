@@ -1,10 +1,13 @@
 package com.example.System;
 
+import com.example.BD.TableDao.EnderecoDao;
 import com.example.BD.TableDao.ImovelDao;
 import com.example.BD.TableDao.LoginDao;
+import com.example.BD.TableDao.UsuarioDao;
 import com.example.Entidades.Aluguel;
 import com.example.Entidades.Endereco;
 import com.example.Entidades.Imovel;
+import com.example.Entidades.Login;
 import com.example.Entidades.Usuario;
 import com.example.System.JTextField.JPasswordLimit;
 import com.example.System.JTextField.JTextFieldCharacters;
@@ -366,14 +369,47 @@ public class SystemLogin {
                     }                    
 
                 });
-                // excluir imovel
+                //Alugar imovel
+                sm.getjMenuitemAlugar().addActionListener(new ActionListener() {
+
+                    @Override
+            public void actionPerformed(ActionEvent e) {
+                sm.menuPrincipal.dispose();
+                
+                //codigo de alugar
+
+                //voltar para menu principal
+                systemimovel.getJBvoltar().addActionListener(new ActionListener() {
+
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        
+
+                        try {
+                             login();
+                             systemimovel.getJFtela().dispose();
+
+                            } catch (Exception ex) {
+                               ex.printStackTrace();
+                            }
+                                
+                            }
+                            
+                        });    
+                
+                    }
+                    
+                    
+                }); 
+
+                // Excluir imovel
                 sm.getjMenuitemRemover().addActionListener(new ActionListener() {
 
                     @Override
             public void actionPerformed(ActionEvent e) {
                 sm.menuPrincipal.dispose();
                 systemimovel.removerImovel();;
-               systemimovel.getJBremover().addActionListener(new ActionListener() {
+                systemimovel.getJBremover().addActionListener(new ActionListener() {
 
             public void actionPerformed(ActionEvent e) {
 
@@ -424,6 +460,19 @@ public class SystemLogin {
                         public void actionPerformed(ActionEvent e) {
                             try {
                                 //codigo de alterar dados
+                                int id = rs.getInt("id_usuario");
+                                String nome = systemalterar.getJTnome().getText();
+                                String email = systemalterar.getJTemail().getText();
+                                String day = systemalterar.getJTdia().getText();
+                                String month = systemalterar.getJTmes().getText();
+                                String year = systemalterar.getJTano().getText();
+                                LocalDate dat = LocalDate.of(Integer.parseInt(year), Integer.parseInt(month), Integer.parseInt(day));
+                                java.sql.Date sqldate = java.sql.Date.valueOf(dat);
+
+                                Usuario usuario = new Usuario(id,nome,email,sqldate);
+
+                                UsuarioDao usuarioD = new UsuarioDao();
+                                usuarioD.Alterar(usuario);
 
                             } catch (Exception ex) {
                              ex.printStackTrace();
@@ -466,6 +515,19 @@ public class SystemLogin {
                         public void actionPerformed(ActionEvent e) {
                             try {
                             //codigo de alterar endereço
+                            String estado = systemalterar.getJTestado().getText();
+                            String cidade = systemalterar.getJTcidade().getText();
+                            String bairro = systemalterar.getJTbairro().getText();
+                            String logradouro = systemalterar.getJTlogradouro().getText();
+                            int numero = Integer.parseInt(systemalterar.getJTnumero().getText());
+                            String cep = systemalterar.getJTcep().getText();
+                            int id = rs.getInt("id_usuario");
+
+                            Endereco endereco = new Endereco(estado, cidade, bairro, logradouro, numero, cep, id);
+
+                            EnderecoDao enderecoD = new EnderecoDao();
+                            enderecoD.Alterar(endereco);
+
 
                             } catch (Exception ex) {
                              ex.printStackTrace();
@@ -508,6 +570,18 @@ public class SystemLogin {
                         public void actionPerformed(ActionEvent e) {
                             try {
                                 //codigo de alterar senha
+                                if((rs.getString("senha").equals(String.valueOf(systemalterar.getJPsenha().getPassword()))) && (rs.getString("senha").equals(String.valueOf(systemalterar.getJPconfirmarSenha().getPassword())))){
+                                    
+                                    int id = rs.getInt("id_usuario");
+                                    String novasenha = String.valueOf(systemalterar.getJPnovaSenha().getPassword());
+                                    
+                                    Login login = new Login(id, novasenha);
+
+                                    LoginDao loginD = new LoginDao();
+                                    loginD.alterarSenha(login);
+                                }else{
+                                    JOptionPane.showMessageDialog(null, "Senha não equivalente","ERRO", JOptionPane.ERROR_MESSAGE);
+                                }
 
                             } catch (Exception ex) {
                              ex.printStackTrace();
