@@ -266,6 +266,14 @@ public class SystemAlterar {
         jCexibirSenha.setBackground(new Color(160, 255, 200));
         jFtela3.add(jCexibirSenha);
 
+        jBalterar3 = new JButton("ALTERAR");
+        jBalterar3.setBounds(120, 250, 100, 25);
+        jFtela3.add(jBalterar3);
+        
+        jBvoltar3 = new JButton("VOLTAR");
+        jBvoltar3.setBounds(245, 250, 100, 25);
+        jFtela3.add(jBvoltar3);
+
         jFtela3.setVisible(true);
 
         javax.swing.GroupLayout layout = new GroupLayout(jFtela3.getContentPane());

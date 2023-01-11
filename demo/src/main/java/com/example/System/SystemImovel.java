@@ -4,7 +4,7 @@ import java.awt.Color;
 import java.awt.Font;
 import javax.swing.*;
 
-import com.example.System.JTextField.JTextFieldCharacters;
+
 import com.example.System.JTextField.JTextFieldLetters;
 import com.example.System.JTextField.JTextFieldNumber;
 

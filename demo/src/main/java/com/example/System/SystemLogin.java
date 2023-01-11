@@ -35,6 +35,7 @@ public class SystemLogin {
    Imovel imovel = new Imovel();
    Aluguel aluguel = new Aluguel();
    SystemImovel systemimovel = new SystemImovel();
+   SystemAlterar systemalterar = new SystemAlterar();
 
     public SystemLogin() {
         jDesktopPane1 = new JDesktopPane();
@@ -205,10 +206,11 @@ public class SystemLogin {
 
                  @Override
                 public void actionPerformed(ActionEvent e) {
-                    imovel.getFrame().dispose();
+                    
 
                 try {
                    login();
+                   imovel.getFrame().dispose();
 
                    } catch (Exception ex) {
                      ex.printStackTrace();
@@ -240,10 +242,11 @@ public class SystemLogin {
 
                                 @Override
                         public void actionPerformed(ActionEvent e) {
-                            aluguel.getFrame().dispose();
+                            
 
                                try {
                                     login();
+                                    aluguel.getFrame().dispose();
 
                                     } catch (Exception ex) {
                                         ex.printStackTrace();
@@ -350,9 +353,9 @@ public class SystemLogin {
                         @Override
                         public void actionPerformed(ActionEvent e) {
                             try {
-                                 systemimovel.getJFtela().dispose();
-                                 login();
-
+                                login(); 
+                                systemimovel.getJFtela().dispose();
+                                
                                 } catch (Exception ex) {
                                    ex.printStackTrace();
                                 }
@@ -388,10 +391,11 @@ public class SystemLogin {
 
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        systemimovel.getJFtela().dispose();
+                        
 
                         try {
                              login();
+                             systemimovel.getJFtela().dispose();
 
                             } catch (Exception ex) {
                                ex.printStackTrace();
@@ -405,6 +409,146 @@ public class SystemLogin {
                     
                     
                 }); 
+                //Alterar dados
+                sm.getjMenuitemAlterarDados().addActionListener(new ActionListener() {
+
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        
+                        sm.menuPrincipal.dispose();
+                        systemalterar.alterarDados();
+                        
+                        systemalterar.getJBalterar().addActionListener(new ActionListener() {
+
+                            @Override
+                        public void actionPerformed(ActionEvent e) {
+                            try {
+                                //codigo de alterar dados
+
+                            } catch (Exception ex) {
+                             ex.printStackTrace();
+                                }
+                                
+                            }                           
+                        });
+
+                        //voltar para menu principal
+                        systemalterar.getJBvoltar().addActionListener(new ActionListener() {
+
+                        @Override
+                        public void actionPerformed(ActionEvent e) {
+                            try {
+                                 login();
+                                 systemalterar.getJFtela().dispose();                                
+
+                                } catch (Exception ex) {
+                                   ex.printStackTrace();
+                                }
+                                    
+                                }
+                                
+                            });                      
+                    }                    
+
+                });
+                //Alterar endereço
+                sm.getjMenuitemAlterarEndereco().addActionListener(new ActionListener() {
+
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        
+                        sm.menuPrincipal.dispose();
+                        systemalterar.alterarEndereco();
+                        
+                        systemalterar.getJBalterar2().addActionListener(new ActionListener() {
+
+                            @Override
+                        public void actionPerformed(ActionEvent e) {
+                            try {
+                            //codigo de alterar endereço
+
+                            } catch (Exception ex) {
+                             ex.printStackTrace();
+                                }
+                                
+                            }                           
+                        });
+
+                        //voltar para menu principal
+                        systemalterar.getJBvoltar2().addActionListener(new ActionListener() {
+
+                        @Override
+                        public void actionPerformed(ActionEvent e) {
+                            try {
+                                login(); 
+                                systemalterar.getJFtela2().dispose();                                
+
+                                } catch (Exception ex) {
+                                   ex.printStackTrace();
+                                }
+                                    
+                                }
+                                
+                            });                      
+                    }                    
+
+                });
+                //Alterar senha
+                sm.getjMenuitemAlterarSenha().addActionListener(new ActionListener() {
+
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        
+                        sm.menuPrincipal.dispose();
+                        systemalterar.alterarSenha();
+                        
+                        systemalterar.getJBalterar3().addActionListener(new ActionListener() {
+
+                            @Override
+                        public void actionPerformed(ActionEvent e) {
+                            try {
+                                //codigo de alterar senha
+
+                            } catch (Exception ex) {
+                             ex.printStackTrace();
+                                }
+                                
+                            }                           
+                        });
+
+                        //voltar para menu principal
+                        systemalterar.getJBvoltar3().addActionListener(new ActionListener() {
+
+                        @Override
+                        public void actionPerformed(ActionEvent e) {
+                            try {
+                                login(); 
+                                systemalterar.getJFtela3().dispose();                              
+
+                                } catch (Exception ex) {
+                                   ex.printStackTrace();
+                                }
+                                    
+                                }
+                                
+                            });                      
+                    }                    
+
+                });
+                //Excluir conta
+                sm.getjMenuitemExcluirConta().addActionListener(new ActionListener() {
+
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        try {
+                            //codigo de excluir conta
+                        } catch (Exception ex) {
+                            ex.printStackTrace();
+                        }
+                        
+                    }
+
+                });
 
                 
                 

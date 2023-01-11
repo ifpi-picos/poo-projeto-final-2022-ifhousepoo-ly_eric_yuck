@@ -28,6 +28,10 @@ public class SystemMenu{
     private JMenuItem jMenuitemAlterar;
     private JMenuItem jMenuitem8;
     private JMenuItem jMenuitemRemover;
+    private JMenuItem jMenuitemAlterarDados;
+    private JMenuItem jMenuitemAlterarEndereco;
+    private JMenuItem jMenuitemAlterarSenha;
+    private JMenuItem jMenuitemExcluirConta;
 
     
     JFrame menuPrincipal =  new JFrame();
@@ -54,6 +58,10 @@ public class SystemMenu{
         jMenuitemRemover = new JMenuItem();
 
         jMenu4 = new JMenu();
+        jMenuitemAlterarDados = new JMenuItem();
+        jMenuitemAlterarEndereco = new JMenuItem();
+        jMenuitemAlterarSenha = new JMenuItem();
+        jMenuitemExcluirConta = new JMenuItem();
 
         menuPrincipal.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         menuPrincipal.setSize(500, 350);
@@ -106,12 +114,24 @@ public class SystemMenu{
         jMenuitem8.setText("Alugar");
         jMenu3.add(jMenuitem8);
         
-        jMenuitemRemover.setText("excluir");
+        jMenuitemRemover.setText("Excluir");
         jMenu3.add(jMenuitemRemover);
 
         jMenuBar1.add(jMenu3);
         
         jMenu4.setText("Definições");
+
+        jMenuitemAlterarDados.setText("Alterar dados");
+        jMenu4.add(jMenuitemAlterarDados);
+
+        jMenuitemAlterarEndereco.setText("Alterar endereço");
+        jMenu4.add(jMenuitemAlterarEndereco);
+
+        jMenuitemAlterarSenha.setText("Alterar senha");
+        jMenu4.add(jMenuitemAlterarSenha);
+
+        jMenuitemExcluirConta.setText("Excluir conta");
+        jMenu4.add(jMenuitemExcluirConta);
         
         jMenuBar1.add(jMenu4);
 
@@ -157,11 +177,23 @@ public class SystemMenu{
     public JMenuItem getjMenuitemCadastro() {
         return jMenuitemCadastro;
     }
-    
+
     public JMenuItem getjMenuitemRemover() {
         return jMenuitemRemover;
     }
     public JMenuItem getjMenuitemAlterar() {
         return jMenuitemAlterar;
+    }
+    public JMenuItem getjMenuitemAlterarDados() {
+        return jMenuitemAlterarDados;
+    }
+    public JMenuItem getjMenuitemAlterarEndereco() {
+        return jMenuitemAlterarEndereco;
+    }
+    public JMenuItem getjMenuitemAlterarSenha() {
+        return jMenuitemAlterarSenha;
+    }
+    public JMenuItem getjMenuitemExcluirConta() {
+        return jMenuitemExcluirConta;
     }
 }
