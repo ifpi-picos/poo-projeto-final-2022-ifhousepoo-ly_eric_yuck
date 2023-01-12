@@ -163,7 +163,7 @@ public class SystemAlterar {
         jFtela2.add(jLbairro);
         
         jLlogradouro = new JLabel("RUA");
-        jLlogradouro.setBounds(10, 140, 265, 26);
+        jLlogradouro.setBounds(10, 165, 265, 26);
         jFtela2.add(jLlogradouro);
         
         jLcep = new JLabel("CEP");

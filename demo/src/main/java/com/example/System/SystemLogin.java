@@ -20,6 +20,8 @@ import java.awt.event.ActionListener;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.List;
+
 public class SystemLogin {
 
    private JPasswordField jpSenha;
@@ -154,6 +156,20 @@ public class SystemLogin {
             ResultSet rs = loginDao.auntenticacaoDoLogin(String.valueOf(jtUsuario.getText()), String.valueOf(jpSenha.getPassword()));
             
             if (rs.next()){
+                         AluguelDao aluguelDao = new AluguelDao();
+
+                         List<Aluguel> alugueis = aluguelDao.listar(1);
+                         LocalDate now = LocalDate.now();
+
+                        java.sql.Date dataAtual = java.sql.Date.valueOf(now);
+
+
+                         for (Aluguel a : alugueis){
+                         if(String.valueOf(a.getDataDeFim()).contains(String.valueOf(dataAtual))){
+                        aluguelDao.remover(1,dataAtual);
+
+      }
+                        }
                 
                 frame.dispose();
                 SystemMenu sm = new SystemMenu();
@@ -382,7 +398,7 @@ public class SystemLogin {
                     @Override
                     public void actionPerformed(ActionEvent e) {
                         
-                        try {
+                            try {
                                 int codigo = Integer.parseInt(String.valueOf(systemimovel.getJTcodigo().getText()));
                                 String day = systemimovel.getJTdia().getText();
                                 String month = systemimovel.getJTmes().getText();
@@ -399,10 +415,10 @@ public class SystemLogin {
                                 Aluguel aluguel = new Aluguel(sqldate, sqldateFim, codigo,rs.getInt("id_usuario"), true);
                                 AluguelDao aluguelDao = new AluguelDao();
                                 aluguelDao.salvarAluguel(aluguel);
-                                JOptionPane.showMessageDialog(null,"IMOVEL ALUGADO COM SUCESSO");
+                                
                             
                             } catch (Exception ex) {
-                                JOptionPane.showMessageDialog(null,"ESSE IMÓVEL JÁ ESTÁ ALUGADO");
+                                ex.printStackTrace();
                             }
                                 
                             }
@@ -647,18 +663,26 @@ public class SystemLogin {
                     @Override
                     public void actionPerformed(ActionEvent e) {
                         try {
-                            //codigo de excluir conta
-                            
+                            UsuarioDao UsuarioDao = new UsuarioDao();
+                            EnderecoDao enderecoDao = new EnderecoDao();
+                            ImovelDao imovelDao = new ImovelDao();
+                            AluguelDao aluguelDao = new AluguelDao();
+                            LoginDao loginDao = new LoginDao();
+
+                            aluguelDao.remover(rs.getInt("id_usuario"));
+                            loginDao.Remover(rs.getInt("id_usuario"));
+                            enderecoDao.Remover(rs.getInt("id_usuario"));
+                            imovelDao.RemoverImovies(rs.getInt("id_usuario"));
+                            UsuarioDao.Remover(rs.getInt("id_usuario"));
+
+
                         } catch (Exception ex) {
-                            ex.printStackTrace();
+                            JOptionPane.showMessageDialog(null,"erro");
                         }
                         
                     }
 
                 });
-
-                
-                
         }else
             JOptionPane.showMessageDialog(null, "usuário ou senha incorreto!!");
         } catch (SQLException e) {

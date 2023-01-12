@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.swing.JOptionPane;
+
 import com.example.BD.Interface.IAluguel;
 import com.example.Entidades.Aluguel;
 import com.example.conexaoBD.Conexao;
@@ -23,11 +25,12 @@ public class AluguelDao implements IAluguel {
             pstm.setDate(3, new java.sql.Date(aluguel.getDataDeFim().getTime()));
             pstm.setInt(4, aluguel.getId_usuario());
             pstm.setBoolean(5, aluguel.isAlugado());
-
             
             pstm.executeUpdate();
+            JOptionPane.showMessageDialog(null,"IMOVEL ALUGADO COM SUCESSO");
         } catch (Exception e) {
-            e.printStackTrace();
+            JOptionPane.showMessageDialog(null,"IMOVEL JÁ ALUGADO");
+
         }
         return aluguel;
     }
@@ -39,6 +42,18 @@ public class AluguelDao implements IAluguel {
             String sql = "DELETE FROM alugueis WHERE id_usuario = ?";
             PreparedStatement pstm = connection.prepareStatement(sql);
             pstm.setInt(1, id);
+            pstm.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }  
+    }
+    public void remover(int id,Date data) throws SQLException {
+        try {
+            Connection connection = Conexao.connection();
+            String sql = "DELETE FROM alugueis WHERE id_usuario = ? AND data_De_Fim = ?";
+            PreparedStatement pstm = connection.prepareStatement(sql);
+            pstm.setInt(1, id);
+            pstm.setDate(2,new java.sql.Date(data.getTime()));
             pstm.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
@@ -67,7 +82,7 @@ public class AluguelDao implements IAluguel {
     public List<Aluguel> listar(int idUsuario) throws SQLException {
         
         Connection connection = Conexao.connection();
-        String sql = "SELECT * FROM alugueis WHERE id_usuario = ?";
+        String sql = "SELECT * FROM alugueis WHERE id_usuario = ? ";
         PreparedStatement pstm = connection.prepareStatement(sql);
         pstm.setInt(1, idUsuario);
         ResultSet rs = pstm.executeQuery();

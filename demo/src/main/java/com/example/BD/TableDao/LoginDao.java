@@ -61,5 +61,18 @@ public class LoginDao implements Ilogin {
       return login;
       }
 
-    
+      public void Remover(int login) {
+        try {
+            Connection connection = Conexao.connection();
+            String sql = "DELETE FROM logins WHERE id_usuario = ? ";
+            PreparedStatement pstm = connection.prepareStatement(sql);
+            pstm.setInt(1,login);
+            pstm.executeUpdate();
+
+            
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        
+    }
 }

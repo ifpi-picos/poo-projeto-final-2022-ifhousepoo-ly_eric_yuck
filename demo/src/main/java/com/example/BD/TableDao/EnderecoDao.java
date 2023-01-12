@@ -39,9 +39,10 @@ public class EnderecoDao implements IEndereco {
     public void Remover(int endereco) {
         try {
             Connection connection = Conexao.connection();
-            String sql = "DELETE FORM endereco WHERE numero = ? ";
+            String sql = "DELETE FROM endereco WHERE idUsuario = ? ";
             PreparedStatement pstm = connection.prepareStatement(sql);
             pstm.setInt(1,endereco);
+            pstm.executeUpdate();
             
         } catch (SQLException e) {
             e.printStackTrace();
@@ -53,7 +54,7 @@ public class EnderecoDao implements IEndereco {
     public Endereco Alterar(Endereco endereco) {
         try {
             Connection connection = Conexao.connection();
-            String sql = "UPDATE endereco SET estado = ? , cidade = ? , bairro  = ? , logradouro = ? , numero = ? WHERE id_usuario = ?";
+            String sql = "UPDATE endereco SET estado = ? , cidade = ? , bairro  = ? , logradouro = ? , numero = ? WHERE idUsuario = ?";
             PreparedStatement pstm = connection.prepareStatement(sql,PreparedStatement.RETURN_GENERATED_KEYS);
             pstm.setString(1, endereco.getEstado());
             pstm.setString(2, endereco.getCidade());

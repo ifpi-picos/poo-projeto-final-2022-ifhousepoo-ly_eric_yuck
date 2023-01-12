@@ -54,6 +54,22 @@ return Imovel;
 
     }
 
+    public void RemoverImovies(int usuario) {
+
+        try {
+            Connection connection = Conexao.connection();
+            String aql = "DELETE FROM imoveis WHERE id_usuario = ?";
+            PreparedStatement pstm = connection.prepareStatement(aql);
+                pstm.setInt(1, usuario);
+
+            pstm.executeUpdate();
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
     @Override
     public Imovel Alterar(Imovel imovel) {
         try {
