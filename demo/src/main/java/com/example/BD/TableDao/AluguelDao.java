@@ -1,5 +1,4 @@
 package com.example.BD.TableDao;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -11,20 +10,20 @@ import java.util.List;
 import com.example.BD.Interface.IAluguel;
 import com.example.Entidades.Aluguel;
 import com.example.conexaoBD.Conexao;
-
-
 public class AluguelDao implements IAluguel {
 
     @Override
     public Aluguel salvarAluguel(Aluguel aluguel) {
         try {
             Connection connection = Conexao.connection();
-            String sql = "INSERT INTO aluguel (data_De_inicio , data_De_Fim , codigo_imovel , Alugado) VALUES (?,?,?,?)";
+            String sql = "INSERT INTO alugueis (codigo_imovel ,data_De_inicio ,data_De_Fim ,id_usuario, Alugado) VALUES (?,?,?,?,?)";
             PreparedStatement pstm = connection.prepareStatement(sql,PreparedStatement.RETURN_GENERATED_KEYS);
-            pstm.setDate(1, new java.sql.Date(aluguel.getDataDeFim().getTime()));
-            pstm.setDate(2, new java.sql.Date(aluguel.getDataDeFim().getTime()));
-            pstm.setInt(3, aluguel.getIdImovel());
-            pstm.setBoolean(4, aluguel.isAlugado());
+            pstm.setInt(1, aluguel.getIdImovel());
+            pstm.setDate(2, new java.sql.Date(aluguel.getDataDeIn().getTime()));
+            pstm.setDate(3, new java.sql.Date(aluguel.getDataDeFim().getTime()));
+            pstm.setInt(4, aluguel.getId_usuario());
+            pstm.setBoolean(5, aluguel.isAlugado());
+
             
             pstm.executeUpdate();
         } catch (Exception e) {
@@ -34,12 +33,12 @@ public class AluguelDao implements IAluguel {
     }
     
     @Override
-    public void remover(int algo) throws SQLException {
+    public void remover(int id) throws SQLException {
         try {
             Connection connection = Conexao.connection();
-            String sql = "DELETE FROM aluguel WHERE código = ?";
+            String sql = "DELETE FROM alugueis WHERE id_usuario = ?";
             PreparedStatement pstm = connection.prepareStatement(sql);
-            pstm.setInt(1, algo);
+            pstm.setInt(1, id);
             pstm.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();

@@ -70,21 +70,12 @@ public class Usuario {
 
     UsuarioDao usariodao = new UsuarioDao();
 
-    public void status() throws SQLException{
-        
-     List <Usuario> usuarios = usariodao.Listar();
-     for(Usuario usuario: usuarios){
-    System.out.println(usuario);
-    }
-    }
-    
-    
     public String toString() {
         
         return "NOME: " + nome + " \nEMAIL: " + email + "\nDATA DE NASCIMENTO: " + dataDeNasc;
     
     }
-
+    
     public void statusU(int usuario1) throws SQLException{
         
         List <Usuario> usuarios = usariodao.ListarUsuario(usuario1);

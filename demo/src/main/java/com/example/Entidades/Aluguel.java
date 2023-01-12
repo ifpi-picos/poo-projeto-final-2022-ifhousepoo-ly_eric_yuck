@@ -17,9 +17,9 @@ import com.example.BD.TableDao.AluguelDao;
 public class Aluguel {
     private Date dataDeIn;
     private Date dataDeFim;
-    private Imovel imovel;
     private boolean alugado;
     private int idImovel;
+    private int id_usuario;
     private JFrame frame;
     private JButton JBvoltar;
 
@@ -31,15 +31,21 @@ public class Aluguel {
         this.idImovel = idImovel;
         this.alugado = alugado;
     }
+
+    public Aluguel(Date dataDeIn, Date dataDeFim, int idImovel,int id_usuario, boolean alugado) {
+        this.dataDeIn = dataDeIn;
+        this.dataDeFim = dataDeFim;
+        this.idImovel = idImovel;
+        this.id_usuario = id_usuario;
+        this.alugado = alugado;
+    }
     public Date getDataDeIn() {
         return dataDeIn;
     }
     public Date getDataDeFim() {
         return dataDeFim;
     }
-    public Imovel getImovel() {
-        return imovel;
-    }
+    
     public boolean isAlugado() {
         return alugado;
     }
@@ -54,6 +60,9 @@ public class Aluguel {
     }
     public JButton getJBvoltar() {
         return JBvoltar;
+    }
+    public int getId_usuario() {
+        return id_usuario;
     }
 
     AluguelDao alugueldao = new AluguelDao();
@@ -93,5 +102,6 @@ public class Aluguel {
     
         frame.setVisible(true);
     }
+
    
 }

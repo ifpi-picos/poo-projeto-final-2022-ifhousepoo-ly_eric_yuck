@@ -75,24 +75,6 @@ public class UsuarioDao implements IUsuario{
         
     }
    
-    public List<Usuario> Listar() throws SQLException {
-        Connection connection = Conexao.connection();
-        String sql = "SELECT * FROM usuario";
-        PreparedStatement pstm = connection.prepareStatement(sql);
-        ResultSet rs = pstm.executeQuery();
-        List<Usuario> usuarios  = new ArrayList<>();
-        while(rs.next()){
-             int id = rs.getInt("id");
-             String nome = rs.getString("nome");
-             String email = rs.getString("email");
-             Date dataDeNasc = rs.getDate("data_nas");
-             Usuario user = new Usuario(id,nome, email,dataDeNasc);
-             usuarios.add(user);           
-    }
-        return usuarios;
-   
-    }
-
     public List<Usuario> ListarUsuario(int idUser) throws SQLException {
         Connection connection = Conexao.connection();
         String sql = "SELECT * FROM usuario WHERE id = ?";

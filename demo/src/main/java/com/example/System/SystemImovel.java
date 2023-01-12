@@ -14,11 +14,15 @@ private JLabel JLtitulo;
 private JLabel JLdescricao;
 private JLabel JLvalorAluguel;
 private JLabel JLdata;
+private JLabel JLdataFim;
 private JTextField JTdescricao;
 private JTextField JTvalorAluguel;
 private JTextField JTdia;
 private JTextField JTmes;
 private JTextField JTano;
+private JTextField JTdiaFim;
+private JTextField JTmesFim;
+private JTextField JTanoFim;
 private JDesktopPane jDesktopPane1;
 private JButton JBcadastrar;
 private JButton JBvoltar;
@@ -26,6 +30,7 @@ private JButton JBalterar;
 private JLabel JLcodigo;
 private JTextField JTcodigo;
 private JButton JBremover;
+private JButton JBAlugar;
 
 public void cadastrarImovel(){
     JFtela = new JFrame("CADASTRO");
@@ -176,6 +181,85 @@ public void cadastrarImovel(){
     
             );
     }
+    public void alugarImovel(){
+        JFtela = new JFrame("ALUGAR");
+        JFtela.setFont(new Font("Segoe UI Symbol", Font.BOLD, 25));
+        JFtela.setSize(500, 350);
+        JFtela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        JFtela.getContentPane().setLayout(null);
+        JFtela.setLocationRelativeTo(null);
+    
+        jDesktopPane1 = new JDesktopPane();
+        jDesktopPane1.setBackground(new Color(160,255, 200));
+    
+        JLtitulo = new JLabel("ALUGAR IMOVEL");
+        JLtitulo.setBounds(125,15,265,26);
+        JLtitulo.setFont(new Font("Segoe UI Symbol", Font.BOLD, 25));
+        JFtela.add(JLtitulo);
+
+        JLcodigo = new JLabel("CÓDIGO DO IMOVEL");
+        JLcodigo.setBounds(30,80,265,26);
+        JLcodigo.setFont(new Font("Segoe UI Symbol", Font.BOLD, 15));
+        JFtela.add(JLcodigo);
+
+        JTcodigo = new JTextFieldNumber(20);
+        JTcodigo.setBounds(30,105,40,27);
+        JFtela.add(JTcodigo);
+
+        JLdata = new JLabel("DATA DE INICIO");
+        JLdata.setBounds(30,130,265,26);
+        JFtela.add(JLdata);
+
+        JLdataFim = new JLabel("DATA DE FIM");
+        JLdataFim.setBounds(30,180,265,26);
+        JFtela.add(JLdataFim);
+        
+        JTdia = new  JTextFieldNumber(2);
+        JTdia.setBounds(30,155,25,25);
+        JFtela.add(JTdia);
+    
+        JTmes = new  JTextFieldNumber(2);
+        JTmes.setBounds(56,155,25,25);
+        JFtela.add(JTmes);
+    
+        JTano = new JTextFieldNumber(4);
+        JTano.setBounds(83,155,40,25);
+        JFtela.add(JTano);
+
+        JTdiaFim = new  JTextFieldNumber(2);
+        JTdiaFim.setBounds(30,205,25,25);
+        JFtela.add(JTdiaFim);
+    
+        JTmesFim = new  JTextFieldNumber(2);
+        JTmesFim.setBounds(56,205,25,25);
+        JFtela.add(JTmesFim);
+    
+        JTanoFim = new JTextFieldNumber(4);
+        JTanoFim.setBounds(83,205,40,25);
+        JFtela.add(JTanoFim);
+
+        JBAlugar = new JButton("ALUGAR");
+        JBAlugar.setBounds(310,150,100,25);
+        JFtela.add(JBAlugar);
+    
+        JBvoltar = new JButton("VOLTAR");
+        JBvoltar.setBounds(310,185,100,25);
+        JFtela.add(JBvoltar);
+    
+        JFtela.setVisible(true);
+
+        javax.swing.GroupLayout layout = new GroupLayout(JFtela.getContentPane());
+            JFtela.getContentPane().setLayout(layout);
+            layout.setHorizontalGroup(
+                layout.createParallelGroup(GroupLayout.Alignment.LEADING).addComponent(jDesktopPane1)
+            );
+            layout.setVerticalGroup(
+                layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                .addComponent(jDesktopPane1)  
+    
+            );
+
+    }
 public void removerImovel(){
     JFtela = new JFrame("CADASTRO");
     JFtela.setFont(new Font("Segoe UI Symbol", Font.BOLD, 25));
@@ -261,9 +345,23 @@ public JTextField getJTcodigo() {
     return JTcodigo;
 }
 
-
 public JButton getJBremover() {
     return JBremover;
+}
+JTextField getJTdiaFim() {
+    return JTdiaFim;
+}
+
+public JTextField getJTmesFim() {
+    return JTmesFim;
+}
+
+public JTextField getJTanoFim() {
+    return JTanoFim;
+}
+
+public JButton getJBAlugar() {
+    return JBAlugar;
 }
 
 

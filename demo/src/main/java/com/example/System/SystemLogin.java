@@ -1,5 +1,6 @@
 package com.example.System;
 
+import com.example.BD.TableDao.AluguelDao;
 import com.example.BD.TableDao.EnderecoDao;
 import com.example.BD.TableDao.ImovelDao;
 import com.example.BD.TableDao.LoginDao;
@@ -145,7 +146,6 @@ public class SystemLogin {
 
     }
     
-
     public void login() throws SQLException {
 
         try {
@@ -372,11 +372,43 @@ public class SystemLogin {
                 //Alugar imovel
                 sm.getjMenuitemAlugar().addActionListener(new ActionListener() {
 
-                    @Override
             public void actionPerformed(ActionEvent e) {
+                systemimovel.alugarImovel();
                 sm.menuPrincipal.dispose();
                 
-                //codigo de alugar
+                // tala para alugar
+                systemimovel.getJBAlugar().addActionListener(new ActionListener() {
+
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        
+                        try {
+                                int codigo = Integer.parseInt(String.valueOf(systemimovel.getJTcodigo().getText()));
+                                String day = systemimovel.getJTdia().getText();
+                                String month = systemimovel.getJTmes().getText();
+                                String year = systemimovel.getJTano().getText();
+                                LocalDate dat = LocalDate.of(Integer.parseInt(year), Integer.parseInt(month), Integer.parseInt(day));
+                                java.sql.Date sqldate = java.sql.Date.valueOf(dat);
+
+                                String dayFim = systemimovel.getJTdiaFim().getText();
+                                String monthFim = systemimovel.getJTmesFim().getText();
+                                String yearFim = systemimovel.getJTanoFim().getText();
+                                LocalDate datFim = LocalDate.of(Integer.parseInt(yearFim), Integer.parseInt(monthFim), Integer.parseInt(dayFim));
+                                java.sql.Date sqldateFim = java.sql.Date.valueOf(datFim);
+
+                                Aluguel aluguel = new Aluguel(sqldate, sqldateFim, codigo,rs.getInt("id_usuario"), true);
+                                AluguelDao aluguelDao = new AluguelDao();
+                                aluguelDao.salvarAluguel(aluguel);
+                                JOptionPane.showMessageDialog(null,"IMOVEL ALUGADO COM SUCESSO");
+                            
+                            } catch (Exception ex) {
+                                JOptionPane.showMessageDialog(null,"ESSE IMÓVEL JÁ ESTÁ ALUGADO");
+                            }
+                                
+                            }
+                            
+                        });    
+
 
                 //voltar para menu principal
                 systemimovel.getJBvoltar().addActionListener(new ActionListener() {
@@ -616,6 +648,7 @@ public class SystemLogin {
                     public void actionPerformed(ActionEvent e) {
                         try {
                             //codigo de excluir conta
+                            
                         } catch (Exception ex) {
                             ex.printStackTrace();
                         }
