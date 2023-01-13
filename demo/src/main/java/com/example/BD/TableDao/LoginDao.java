@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import javax.swing.JOptionPane;
 
 import com.example.BD.Interface.Ilogin;
 import com.example.Entidades.Login;
@@ -52,9 +53,14 @@ public class LoginDao implements Ilogin {
             pstm.setString(1, login.getSenha());
             pstm.setInt(2, login.getId_usuario());
             pstm.executeUpdate();
-  
+            JOptionPane.showMessageDialog(null,"SENHA ALTERADA COM SUCESSO\n");
+            JOptionPane.showMessageDialog(null,"VOCÊ DEVE ENTRAR COM SUA NOVA SENHA");
+
+
         }
         catch (SQLException e) {
+            JOptionPane.showMessageDialog(null,"FALHA AO ALTERAR SENHA");
+
           e.printStackTrace();
       } 
       
@@ -68,7 +74,6 @@ public class LoginDao implements Ilogin {
             PreparedStatement pstm = connection.prepareStatement(sql);
             pstm.setInt(1,login);
             pstm.executeUpdate();
-
             
         } catch (SQLException e) {
             e.printStackTrace();

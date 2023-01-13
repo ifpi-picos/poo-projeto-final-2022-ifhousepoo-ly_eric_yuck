@@ -6,6 +6,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.swing.JOptionPane;
+
 import com.example.BD.Interface.IEndereco;
 import com.example.Entidades.Endereco;
 import com.example.conexaoBD.Conexao;
@@ -63,13 +66,14 @@ public class EnderecoDao implements IEndereco {
             pstm.setInt(5, endereco.getNumero());
             pstm.setInt(6, endereco.getIdUsuario());
             pstm.executeUpdate();
+            JOptionPane.showMessageDialog(null,"ALTERAÇÃO FEITA COM  SUCESSO");
 
         } catch (Exception e) {
+            JOptionPane.showMessageDialog(null,"ALTERAÇÃO MAL SUCEDIDA");
             e.printStackTrace();
         }
     
-
-        return endereco;
+     return endereco;
     }
 
 

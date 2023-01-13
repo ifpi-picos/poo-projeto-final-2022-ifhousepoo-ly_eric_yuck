@@ -67,8 +67,11 @@ public class UsuarioDao implements IUsuario{
         pstm.setDate(3, new java.sql.Date(usuario.getDataDeNasc().getTime()));
         pstm.setInt(4, usuario.getId());
         pstm.executeUpdate();
+        JOptionPane.showMessageDialog(null,"ALTERAÇÃO FEITA COM  SUCESSO");
 
             } catch (SQLException e) {
+                JOptionPane.showMessageDialog(null,"ALTERAÇÃO MAL SUSEDIDA");
+
                 e.printStackTrace();
             }
        return usuario;

@@ -1,15 +1,23 @@
 package com.example.System;
 
 import java.awt.Color;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 
 import javax.swing.GroupLayout;
+import javax.swing.JButton;
 import javax.swing.JDesktopPane;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.WindowConstants;
+
+import com.example.Entidades.Imovel;
+
+import java.awt.*;
 
 public class SystemMenu{
     
@@ -32,7 +40,8 @@ public class SystemMenu{
     private JMenuItem jMenuitemAlterarEndereco;
     private JMenuItem jMenuitemAlterarSenha;
     private JMenuItem jMenuitemExcluirConta;
-
+    private JButton jblistarImoveis;
+    private JLabel jltitulo;
     
     JFrame menuPrincipal =  new JFrame();
 
@@ -63,6 +72,12 @@ public class SystemMenu{
         jMenuitemAlterarSenha = new JMenuItem();
         jMenuitemExcluirConta = new JMenuItem();
 
+        jltitulo = new JLabel("IMOBILIARIA YDE");
+        jltitulo.setForeground(new Color(100,0, 245));
+        jltitulo.setFont(new Font("Segoe UI Symbol", Font.BOLD, 25));
+        jltitulo.setBounds(140, 50, 265, 26);
+        menuPrincipal.getContentPane().add(jltitulo);
+
         menuPrincipal.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         menuPrincipal.setSize(500, 350);
         menuPrincipal.setTitle("Menu Principal");
@@ -84,12 +99,7 @@ public class SystemMenu{
         jMenuBar1.add(jMenu1);
 
         jMenu2.setText("Perfil");
-        jMenuitemDados.setText("Dados Pessoais");
-        jMenuitemDados.addActionListener(new ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
-            }
-        });
+        
         jMenu2.add(jMenuitemDados);
 
         jMenuitemEndereco.setText("Endereço");
@@ -135,8 +145,26 @@ public class SystemMenu{
         
         jMenuBar1.add(jMenu4);
 
+        jblistarImoveis = new JButton("IMÓVEIS DISPÓNIVEIS");
+        jblistarImoveis.setBounds(140, 150, 200, 50);
+        menuPrincipal.add(jblistarImoveis);
+
         menuPrincipal.setJMenuBar(jMenuBar1);
 
+        jblistarImoveis.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+       Imovel imovel = new Imovel();
+       try {
+        imovel.status();
+    } catch (SQLException e1) {
+        e1.printStackTrace();
+    }
+                
+            }
+        });
+        
         javax.swing.GroupLayout layout = new GroupLayout(menuPrincipal.getContentPane());
         menuPrincipal.getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -147,12 +175,8 @@ public class SystemMenu{
             .addComponent(jDesktopPane1)
         );
 
-
         menuPrincipal.setLocationRelativeTo(null);
         menuPrincipal.setVisible(true);
-
-    }
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {
 
     }
 
@@ -199,4 +223,12 @@ public class SystemMenu{
     public JMenuItem getjMenuitemAlugar() {
         return jMenuitemAlugar;
     }
+    
+    public JButton getJblistarImoveis() {
+        return jblistarImoveis;
+    }
+public static void main(String[] args) {
+    SystemMenu sm = new SystemMenu();
+    sm.menuPrincipal.setVisible(true);
+}
 }

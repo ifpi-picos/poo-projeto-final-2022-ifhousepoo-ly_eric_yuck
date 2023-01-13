@@ -155,24 +155,25 @@ public class SystemLogin {
 
             ResultSet rs = loginDao.auntenticacaoDoLogin(String.valueOf(jtUsuario.getText()), String.valueOf(jpSenha.getPassword()));
             
-            if (rs.next()){
-                         AluguelDao aluguelDao = new AluguelDao();
+             if (rs.next()){
+               
+                    AluguelDao aluguelDao = new AluguelDao();
 
-                         List<Aluguel> alugueis = aluguelDao.listar(1);
-                         LocalDate now = LocalDate.now();
+                    List<Aluguel> alugueis = aluguelDao.listar(rs.getInt("id_usuario"));
+                    LocalDate now = LocalDate.now();
 
-                        java.sql.Date dataAtual = java.sql.Date.valueOf(now);
+                    java.sql.Date dataAtual = java.sql.Date.valueOf(now);
 
+                    for (Aluguel a : alugueis){
+                    if(String.valueOf(a.getDataDeFim()).contains(String.valueOf(dataAtual))){
+                    aluguelDao.remover(rs.getInt("id_usuario"),dataAtual);
 
-                         for (Aluguel a : alugueis){
-                         if(String.valueOf(a.getDataDeFim()).contains(String.valueOf(dataAtual))){
-                        aluguelDao.remover(1,dataAtual);
-
-      }
+                        }
                         }
                 
                 frame.dispose();
                 SystemMenu sm = new SystemMenu();
+                
                 //Sair do programa
                 sm.getjMenuitemSair().addActionListener(new ActionListener() {
 
@@ -392,7 +393,7 @@ public class SystemLogin {
                 systemimovel.alugarImovel();
                 sm.menuPrincipal.dispose();
                 
-                // tala para alugar
+                //tala para alugar
                 systemimovel.getJBAlugar().addActionListener(new ActionListener() {
 
                     @Override
@@ -489,9 +490,7 @@ public class SystemLogin {
                             
                         });    
                 
-                    }
-                    
-                    
+                    }  
                 }); 
                 //Alterar dados
                 sm.getjMenuitemAlterarDados().addActionListener(new ActionListener() {
@@ -501,7 +500,7 @@ public class SystemLogin {
                         
                         sm.menuPrincipal.dispose();
                         systemalterar.alterarDados();
-                        
+
                         systemalterar.getJBalterar().addActionListener(new ActionListener() {
 
                             @Override
@@ -627,6 +626,10 @@ public class SystemLogin {
 
                                     LoginDao loginD = new LoginDao();
                                     loginD.alterarSenha(login);
+                                    new SystemLogin();
+                                    sm.menuPrincipal.dispose();
+                                    systemalterar.getJFtela3().dispose();
+
                                 }else{
                                     JOptionPane.showMessageDialog(null, "Senha não equivalente","ERRO", JOptionPane.ERROR_MESSAGE);
                                 }
@@ -683,6 +686,8 @@ public class SystemLogin {
                     }
 
                 });
+
+                
         }else
             JOptionPane.showMessageDialog(null, "usuário ou senha incorreto!!");
         } catch (SQLException e) {

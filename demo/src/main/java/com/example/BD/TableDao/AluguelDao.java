@@ -6,9 +6,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
 import javax.swing.JOptionPane;
-
 import com.example.BD.Interface.IAluguel;
 import com.example.Entidades.Aluguel;
 import com.example.conexaoBD.Conexao;
@@ -55,30 +53,12 @@ public class AluguelDao implements IAluguel {
             pstm.setInt(1, id);
             pstm.setDate(2,new java.sql.Date(data.getTime()));
             pstm.executeUpdate();
+            
         } catch (Exception e) {
             e.printStackTrace();
         }  
     }
     
-    @Override
-    public Aluguel alterar(Aluguel aluguel) {
-        try {
-            Connection connection = Conexao.connection();
-            String sql = "UPDATE imoveis BOOLEAN data_De_inicio = ?, data_De_Fim = ?,codigo_imovel = ?,Alugado = ? WHERE código = ?";
-            
-            PreparedStatement pstm = connection.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
-            pstm.setDate(1, new java.sql.Date(aluguel.getDataDeFim().getTime()));
-            pstm.setDate(2, new java.sql.Date(aluguel.getDataDeFim().getTime()));
-            pstm.setInt(3, aluguel.getIdImovel());
-            pstm.setBoolean(4, aluguel.isAlugado());
-            pstm.executeUpdate();
-            
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return aluguel;
-    }
-
     public List<Aluguel> listar(int idUsuario) throws SQLException {
         
         Connection connection = Conexao.connection();
@@ -98,9 +78,7 @@ public class AluguelDao implements IAluguel {
             Aluguel aluguel = new Aluguel(data_De_inicio, data_De_Fim, codigo_imovel, Alugado);
             alugueis.add(aluguel);
         }
-        return alugueis;
-
-       
+        return alugueis;    
     }
 
     

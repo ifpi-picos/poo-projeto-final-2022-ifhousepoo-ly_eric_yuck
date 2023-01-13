@@ -238,31 +238,31 @@ public class SystemAlterar {
         jFtela3.add(jLtitulo3);
 
         jLsenha = new JLabel("Senha");
-        jLsenha.setBounds(200, 87, 265, 26);
+        jLsenha.setBounds(200, 80, 265, 26);
         jFtela3.add(jLsenha);
         
         jLconfirmarSenha = new JLabel("Confirmar Senha");
-        jLconfirmarSenha.setBounds(200, 135, 100, 26);
+        jLconfirmarSenha.setBounds(200, 125, 100, 26);
         jFtela3.add(jLconfirmarSenha);
         
         jLnovaSenha = new JLabel("Nova Senha");
-        jLnovaSenha.setBounds(200, 182, 265, 26);
+        jLnovaSenha.setBounds(200, 172, 265, 26);
         jFtela3.add(jLnovaSenha);
         
         jPsenha = new JPasswordLimit(6);
-        jPsenha.setBounds(200, 110, 100, 20);
+        jPsenha.setBounds(200, 100, 100, 20);
         jFtela3.add(jPsenha);
         
         jPconfirmarSenha = new JPasswordLimit(6);
-        jPconfirmarSenha.setBounds(200, 160, 100, 20);
+        jPconfirmarSenha.setBounds(200, 150, 100, 20);
         jFtela3.add(jPconfirmarSenha);
         
         jPnovaSenha = new JPasswordLimit(6);
-        jPnovaSenha.setBounds(200, 205, 100, 20);
+        jPnovaSenha.setBounds(200, 195, 100, 20);
         jFtela3.add(jPnovaSenha);
 
         jCexibirSenha = new JCheckBox("Exibir Senha?");
-        jCexibirSenha.setBounds(192, 224, 164, 23);
+        jCexibirSenha.setBounds(192, 216, 164, 23);
         jCexibirSenha.setBackground(new Color(160, 255, 200));
         jFtela3.add(jCexibirSenha);
 

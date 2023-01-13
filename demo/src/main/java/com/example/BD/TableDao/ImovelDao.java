@@ -8,6 +8,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.swing.JOptionPane;
+
 import com.example.BD.Interface.IImovel;
 import com.example.Entidades.Imovel;
 import com.example.conexaoBD.Conexao;
@@ -28,10 +30,12 @@ try{
         pstm.setInt(4, Imovel.getIdUsuario());
 
         pstm.executeUpdate();
+        JOptionPane.showMessageDialog(null,"IMOVEL CADASTRADO COM  SUCESSO");
 }
         catch (Exception e) {
-            e.printStackTrace();
+            JOptionPane.showMessageDialog(null,"FALHA AO CADASTRAR IMOVEL");
 
+            e.printStackTrace();
 }
 return Imovel;
     }
@@ -47,8 +51,11 @@ return Imovel;
                 pstm.setInt(2, usuario);
 
             pstm.executeUpdate();
-            
+            JOptionPane.showMessageDialog(null,"IMOVEL REMOVIDO  COM  SUCESSO");
+
         } catch (Exception e) {
+            JOptionPane.showMessageDialog(null,"FALHA AO REMOVER IMOVEL");
+
             e.printStackTrace();
         }
 
@@ -84,10 +91,11 @@ return Imovel;
             pstm.setInt(4, imovel.getCodigo());
             pstm.setInt(5, imovel.getIdUsuario());
             pstm.executeUpdate();
+            JOptionPane.showMessageDialog(null,"ALTERAÇÃO FEITA COM  SUCESSO");
 
         } catch (Exception e) {
-            e.printStackTrace();
-            
+            JOptionPane.showMessageDialog(null,"ALTERAÇÃO MAL SUCEDIDA");
+            e.printStackTrace();   
         }
         return imovel;
     }
