@@ -6,13 +6,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.swing.JOptionPane;
-
 import com.example.BD.Interface.IEndereco;
 import com.example.Entidades.Endereco;
 import com.example.conexaoBD.Conexao;
-
 public class EnderecoDao implements IEndereco {
 
     @Override

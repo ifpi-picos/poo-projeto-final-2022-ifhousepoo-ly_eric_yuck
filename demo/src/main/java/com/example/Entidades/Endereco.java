@@ -75,7 +75,6 @@ public class Endereco {
         return idUsuario;
     }
 
-
     @Override
     public String toString() {
         return "Estado: " + getEstado() + "\nCidade: " + getCidade() + "\nBairro: " + getBairro() 

@@ -69,7 +69,7 @@ public class Aluguel {
 
        @Override
        public String toString() {
-           return "ID do Imovel: " + getIdImovel() + "Data de inicio: " + getDataDeIn() + "Data de fim: " + getDataDeFim() + "Alugado: " + isAlugado();
+           return "ID do Imovel: " + getIdImovel() + " Data de inicio: " + getDataDeIn() + " Data de fim: " + getDataDeFim() + " Alugado: " + isAlugado();
        }
 
        public void statusU(int usuario1) throws SQLException{

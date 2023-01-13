@@ -12,7 +12,6 @@ import com.example.Entidades.Login;
 import com.example.Entidades.Usuario;
 import com.example.System.JTextField.JPasswordLimit;
 import com.example.System.JTextField.JTextFieldCharacters;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -21,7 +20,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.List;
-
 public class SystemLogin {
 
    private JPasswordField jpSenha;
@@ -227,7 +225,6 @@ public class SystemLogin {
                  @Override
                 public void actionPerformed(ActionEvent e) {
                     
-
                 try {
                    login();
                    imovel.getFrame().dispose();
@@ -687,6 +684,38 @@ public class SystemLogin {
 
                 });
 
+                // listar todos os imoveis
+                sm.getJblistarImoveis().addActionListener(new ActionListener() {
+
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+               Imovel imovel = new Imovel();
+               try {
+                imovel.status();
+                sm.menuPrincipal.dispose();
+                 //voltar para menu principal
+                 imovel.getJBvoltar().addActionListener(new ActionListener() {
+
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        try {
+                            login(); 
+                            imovel.getFrame().dispose();                              
+
+                            } catch (Exception ex) {
+                               ex.printStackTrace();
+                            }
+                                
+                            }
+                            
+                        });         
+
+            } catch (SQLException e1) {
+                e1.printStackTrace();
+            }
+                        
+                    }
+                });
                 
         }else
             JOptionPane.showMessageDialog(null, "usuário ou senha incorreto!!");

@@ -7,13 +7,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
 import com.example.BD.Interface.IUsuario;
 import com.example.Entidades.Usuario;
 import com.example.conexaoBD.Conexao;
-
 import javax.swing.*;
-
 public class UsuarioDao implements IUsuario{
 
     public Usuario Salvar(Usuario usuario) {

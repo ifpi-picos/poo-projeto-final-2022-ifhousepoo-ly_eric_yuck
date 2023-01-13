@@ -4,14 +4,11 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
 import javax.swing.JOptionPane;
-
 import com.example.BD.Interface.Ilogin;
 import com.example.Entidades.Login;
 import com.example.Entidades.Usuario;
 import com.example.conexaoBD.Conexao;
-
 public class LoginDao implements Ilogin {
 
     @Override

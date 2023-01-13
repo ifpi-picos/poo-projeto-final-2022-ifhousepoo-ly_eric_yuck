@@ -1,10 +1,6 @@
 package com.example.System;
 
 import java.awt.Color;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.sql.SQLException;
-
 import javax.swing.GroupLayout;
 import javax.swing.JButton;
 import javax.swing.JDesktopPane;
@@ -14,9 +10,6 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.WindowConstants;
-
-import com.example.Entidades.Imovel;
-
 import java.awt.*;
 
 public class SystemMenu{
@@ -99,7 +92,8 @@ public class SystemMenu{
         jMenuBar1.add(jMenu1);
 
         jMenu2.setText("Perfil");
-        
+        jMenuitemDados.setText("Meus Dados");
+
         jMenu2.add(jMenuitemDados);
 
         jMenuitemEndereco.setText("Endereço");
@@ -151,19 +145,6 @@ public class SystemMenu{
 
         menuPrincipal.setJMenuBar(jMenuBar1);
 
-        jblistarImoveis.addActionListener(new ActionListener() {
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-       Imovel imovel = new Imovel();
-       try {
-        imovel.status();
-    } catch (SQLException e1) {
-        e1.printStackTrace();
-    }
-                
-            }
-        });
         
         javax.swing.GroupLayout layout = new GroupLayout(menuPrincipal.getContentPane());
         menuPrincipal.getContentPane().setLayout(layout);
@@ -227,8 +208,5 @@ public class SystemMenu{
     public JButton getJblistarImoveis() {
         return jblistarImoveis;
     }
-public static void main(String[] args) {
-    SystemMenu sm = new SystemMenu();
-    sm.menuPrincipal.setVisible(true);
-}
+
 }

@@ -7,13 +7,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
 import javax.swing.JOptionPane;
-
 import com.example.BD.Interface.IImovel;
 import com.example.Entidades.Imovel;
 import com.example.conexaoBD.Conexao;
-
 public class ImovelDao  implements IImovel{
 
     @Override

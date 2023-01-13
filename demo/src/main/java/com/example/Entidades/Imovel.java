@@ -73,18 +73,40 @@ ImovelDao imoveldao = new ImovelDao();
 
 public void status() throws SQLException{
 
-    List<Imovel> imoveis = imoveldao.Listar();
+    List <Imovel> imoveis = imoveldao.Listar();
+    DefaultComboBoxModel <Imovel> model = new DefaultComboBoxModel<Imovel>();
+    model.addAll(imoveis);
+
+    frame = new JFrame("imoveis");
+    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    frame.setLocationRelativeTo(null);
+    frame.setSize(500, 250);
+
+    JPanel panel = new JPanel();
+    panel.setSize(50, 150);
+    panel.setBackground(new Color(160,255, 200));
+
+    JList <Imovel>jlist = new JList<Imovel>(model);
+
+    JScrollPane scrollPane = new JScrollPane(jlist);
+    panel.add(scrollPane, BorderLayout.SOUTH);
+
+    JBvoltar = new JButton("VOLTAR");
+    JBvoltar.setBounds(50,200,100,200);
+    JBvoltar.setSize(100, 100);
+    panel.add(JBvoltar);
+
+    frame.add(panel);
+
+    frame.setVisible(true);
     
-    for(Imovel imovel : imoveis){
-        System.out.println(imovel);
-    }
 
 }
 
 @Override
 public String toString() {
-    return "Código: " + codigo + "\nDescrição: " + descricao + "\nValor: " + valorDoAluguel
-            + "\nData De Cadastro: " + dataDeCadastro + "\n";
+    return "Código: " + codigo + " \nDescrição: " + descricao + " \nValor: " + valorDoAluguel
+            + " \nData De Cadastro: " + dataDeCadastro + " \n";
 }
 
 

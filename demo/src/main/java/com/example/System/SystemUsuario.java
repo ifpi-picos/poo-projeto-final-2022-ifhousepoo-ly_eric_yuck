@@ -10,13 +10,11 @@ import com.example.System.JTextField.JPasswordLimit;
 import com.example.System.JTextField.JTextFieldCharacters;
 import com.example.System.JTextField.JTextFieldLetters;
 import com.example.System.JTextField.JTextFieldNumber;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.LocalDate;
-
 public class SystemUsuario {
     private JTextField dia;
     private JTextField mes;
@@ -33,6 +31,7 @@ public class SystemUsuario {
     private JPasswordField JTsenha;
     private JButton JBcadastro;
     private JButton JBlogin;
+    private JButton JBlogin1;
     private JButton JBproximo;
     private JLabel JLusuario;
     private JLabel JLsenha;
@@ -153,6 +152,21 @@ public class SystemUsuario {
             JBproximo.setFont(new Font("Segoe UI Symbol", Font.PLAIN, 15));
             frame.getContentPane().add(JBproximo);
             frame.add(JBproximo);
+
+           JBlogin1 = new JButton("FAZER LOGIN");
+           JBlogin1.setBounds(385,10,100,20);
+           JBlogin1.setFont(new Font("Arial", Font.LAYOUT_NO_START_CONTEXT, 8));
+
+           frame.add(JBlogin1);
+           JBlogin1.addActionListener(new ActionListener() {
+           
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new SystemLogin();
+                frame.dispose();
+                
+            }
+        });
 
             javax.swing.GroupLayout layout = new GroupLayout(frame.getContentPane());
             frame.getContentPane().setLayout(layout);
